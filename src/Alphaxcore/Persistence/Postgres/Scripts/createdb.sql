@@ -10,7 +10,7 @@ CREATE TABLE shares
 	worker TEXT NULL,
 	useragent TEXT NULL,
 	ipaddress TEXT NOT NULL,
-        source TEXT NULL,
+    source TEXT NULL,
 	created TIMESTAMP NOT NULL
 );
 
@@ -25,17 +25,17 @@ CREATE TABLE blocks
 	blockheight BIGINT NOT NULL,
 	networkdifficulty DOUBLE PRECISION NOT NULL,
 	status TEXT NOT NULL,
-        type TEXT NULL,
-        confirmationprogress FLOAT NOT NULL DEFAULT 0,
+    type TEXT NULL,
+    confirmationprogress FLOAT NOT NULL DEFAULT 0,
 	effort FLOAT NULL,
 	transactionconfirmationdata TEXT NOT NULL,
 	miner TEXT NULL,
 	reward decimal(28,12) NULL,
-        source TEXT NULL,
-        hash TEXT NULL,
+    source TEXT NULL,
+    hash TEXT NULL,
 	created TIMESTAMP NOT NULL,
 
-        CONSTRAINT BLOCKS_POOL_HEIGHT UNIQUE (poolid, blockheight, type) DEFERRABLE INITIALLY DEFERRED
+    CONSTRAINT BLOCKS_POOL_HEIGHT UNIQUE (poolid, blockheight, type) DEFERRABLE INITIALLY DEFERRED
 );
 
 CREATE INDEX IDX_BLOCKS_POOL_BLOCK_STATUS on blocks(poolid, blockheight, status);
@@ -80,14 +80,14 @@ CREATE TABLE poolstats
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	poolid TEXT NOT NULL,
 	connectedminers INT NOT NULL DEFAULT 0,
-        connectedworkers INT NOT NULL DEFAULT 0,
+    connectedworkers INT NOT NULL DEFAULT 0,
 	poolhashrate DOUBLE PRECISION NOT NULL DEFAULT 0,
 	sharespersecond DOUBLE PRECISION NOT NULL DEFAULT 0,
 	networkhashrate DOUBLE PRECISION NOT NULL DEFAULT 0,
 	networkdifficulty DOUBLE PRECISION NOT NULL DEFAULT 0,
 	lastnetworkblocktime TIMESTAMP NULL,
-        blockheight BIGINT NOT NULL DEFAULT 0,
-        connectedpeers INT NOT NULL DEFAULT 0,
+    blockheight BIGINT NOT NULL DEFAULT 0,
+    connectedpeers INT NOT NULL DEFAULT 0,
 	created TIMESTAMP NOT NULL
 );
 
