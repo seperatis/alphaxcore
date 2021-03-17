@@ -1289,3 +1289,15 @@ void power2b_hash(const char* input, char* output, uint32_t len)
     	};
     	yespower_b2b_tls( input, len, &yespower_b2b_power2b, (yespower_binary_t *)output);
 }
+
+void yespowerMGPC_hash(const char* input, char* output, uint32_t len)
+{
+    yespower_params_t yespower_1_0_MGPC = {
+        .version = YESPOWER_1_0,
+        .N = 2048,
+        .r = 32,
+        .pers = "Magpies are birds of the Corvidae family.",
+        .perslen = 41
+    };
+    yespower_tls(input, len, &yespower_1_0_MGPC, (yespower_binary_t *)output);
+}
