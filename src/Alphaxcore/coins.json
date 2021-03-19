@@ -936,6 +936,25 @@
         "explorerTxLink": "https://openchains.info/coin/luckybit/tx/{0}",
         "explorerAccountLink": "https://openchains.info/coin/luckybit/address/{0}"
     },
+        "magpiecoin": {
+        "name": "MagPie Coin",
+        "symbol": "MGPC",
+        "family": "bitcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "yespower_mgpc"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [ { "hash": "sha256d" } ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://mgpc.explorer.alphax.pro/block/$hash$",
+        "explorerTxLink": "https://mgpc.explorer.alphax.pro/tx/{0}",
+        "explorerAccountLink": "https://mgpc.explorer.alphax.pro/address/{0}"
+    },
     "monacoin": {
         "name": "Monacoin",
         "symbol": "MONA",
