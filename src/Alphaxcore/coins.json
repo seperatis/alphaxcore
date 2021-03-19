@@ -1296,6 +1296,25 @@
         "explorerTxLink": "https://chainz.cryptoid.info/spk/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/spk/address.dws?{0}.htm"
     },
+    "stakecube": {
+        "name": "StakeCube",
+        "symbol": "SCC",
+        "family": "bitcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "x11"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [ { "hash": "x11" } ]
+        },
+        "hasMasterNodes": true,
+        "explorerBlockLink": "https://scc.ccore.online/block/$height$",
+        "explorerTxLink": "https://scc.ccore.online/tx/{0}",
+        "explorerAccountLink":"https://scc.ccore.online/address/{0}"
+    },
     "sugarchain": {
         "name": "SugarChain",
         "symbol": "SUGAR",
