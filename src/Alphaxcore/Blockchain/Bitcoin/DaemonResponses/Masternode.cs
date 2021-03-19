@@ -54,6 +54,9 @@ namespace Alphaxcore.Blockchain.Bitcoin.DaemonResponses
         [JsonProperty("shroudnode")]
         private JToken Shroudnode { set { Masternode = value; } }
         
+        [JsonProperty("xnode")]
+        private JToken Xnode { set { Masternode = value; } }
+        
         [JsonProperty("masternode_payments_started")]
         public bool MasternodePaymentsStarted { get; set; }
 
