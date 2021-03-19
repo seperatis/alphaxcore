@@ -335,6 +335,25 @@
         "explorerTxLink": "https://cbe.explorer.alphax.pro/tx/{0}",
         "explorerAccountLink": "https://cbe.explorer.alphax.pro/address/{0}"
     },
+    "cpuchain": {
+        "name": "CPUchain",
+        "symbol": "CPU",
+        "family": "bitcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "cpupower"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [ { "hash": "cpupower" } ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.cpuchain.org/block/$height$",
+        "explorerTxLink": "https://explorer.cpuchain.org/{0}",
+        "explorerAccountLink": "https://explorer.cpuchain.org/{0}"
+    },
     "dash": {
         "name": "Dash",
         "symbol": "DASH",
