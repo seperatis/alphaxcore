@@ -1,4 +1,4 @@
-Alphaxcore 2.0
+![AlphaxCore](https://github.com/AlphaX-Projects/alphaxcore/blob/master/alphaxcore.png)
 
 ### Features
 
