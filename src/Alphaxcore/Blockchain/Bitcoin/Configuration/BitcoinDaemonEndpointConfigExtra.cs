@@ -24,6 +24,10 @@ namespace Alphaxcore.Blockchain.Bitcoin.Configuration
 {
     public class BitcoinDaemonEndpointConfigExtra
     {
+        /// <summary>
+        /// Minimum number of confirmations.
+        /// Default: 101 - Bitcoin standard
+        /// </summary>
         public int? MinimumConfirmations { get; set; }
 
         /// <summary>
