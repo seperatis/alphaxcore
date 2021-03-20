@@ -96,7 +96,7 @@
         "minimumPayment": 100,
         "payoutScheme": "PROP",
         "payoutSchemeConfig": { "factor": 2.0 },
-        "minimumConfirmations": 340
+        "minimumConfirmations": 341
       }
    }]
 }
