@@ -251,7 +251,7 @@
         "explorerTxLink": "http://explorer.btcd.io/#/TX?TX={0}",
         "explorerAccountLink": "http://explorer.btcd.io/#/address?address={0}"
     },
-    "bitcoinsv": {
+    "bitcoin-sv": {
         "name": "BitcoinSV",
         "symbol": "BSV",
         "family": "bitcoin",
