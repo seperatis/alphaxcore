@@ -506,15 +506,9 @@
             "args": [ { "hash": "sha256d" } ]
         },
         "networks": {
-            "main": {
-                "odoCryptShapeChangeInterval": 864000
-            },
-            "test": {
-                "odoCryptShapeChangeInterval": 86400
-            },
-            "regtest": {
-                "odoCryptShapeChangeInterval": 60
-            }
+            "main": { "odoCryptShapeChangeInterval": 864000 },
+            "test": { "odoCryptShapeChangeInterval": 86400 },
+            "regtest": { "odoCryptShapeChangeInterval": 60 }
         },
         "shareMultiplier": 256,
         "explorerBlockLink": "https://digiexplorer.info/block/$hash$",
@@ -1747,7 +1741,7 @@
         },
         "blockHasher": {
             "hash": "reverse",
-            "args": [ { "hash": "balloon" } ]
+            "args": [ { "hash": "sha256d" } ]
         },
         "hasMasterNodes": true,
         "shareMultiplier": 4096,
