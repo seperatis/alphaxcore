@@ -1,46 +1,57 @@
 {
-    "logging": {
-        "level": "info",
-        "enableConsoleLog": true,
-        "enableConsoleColors": true,
-        "logFile": "",
-        "logBaseDirectory": "",
-        "perPoolLogFile": false
+    "logging":{
+      "level": "info",
+      "enableConsoleLog": true,
+      "enableConsoleColors": true,
+      "logFile": "debug.log",
+      "logBaseDirectory": "/path to log dir",
+      "perPoolLogFile": true
     },
-    "banning": {
-        "manager": "integrated",
-        "banOnJunkReceive": true,
-        "banOnInvalidShares": false
-    },
-    "notifications": {
+    "api": {
+      "enabled": true,
+      "listenAddress": "0.0.0.0",
+      "sslConfig": {
         "enabled": true,
-        "email": {
-            "host": "smtp.example.com",
-            "port": 587,
-            "user": "user",
-            "password": "password",
-            "fromAddress": "info@yourpool.org",
-            "fromName": "support"
-        },
-        "admin": {
-            "enabled": false,
-            "emailAddress": "user@example.com",
-            "notifyBlockFound": true
-        }
+        "sslPath": "/path to pfx file",
+        "sslPassword": "pfx file password"
+      },
+      "port": 4000,
+      "adminPort": 4010
     },
-    "persistence": {
-        "postgres": {
-            "host": "127.0.0.1",
-            "port": 5432,
-            "user": "miningcore",
-            "password": "password",
-            "database": "miningcore"
-        }
+    "banning":{
+      "manager": "integrated",
+      "banOnJunkReceive": true,
+      "banOnInvalidShares": false
     },
-    "paymentProcessing": {
-        "enabled": true,
-        "interval": 600,
-        "shareRecoveryFile": "recovered-shares.txt"
+    "notifications":{
+      "enabled": false,
+      "email":{
+        "host": "smtp.example.com",
+        "port": 587,
+        "user": "user",
+        "password": "passwordhere",
+        "fromAddress": "info@yourpool.org",
+        "fromName": "support"
+      },
+      "admin":{
+        "enabled": false,
+        "emailAddress": "user@example.com",
+        "notifyBlockFound": true
+      }
+    },
+    "persistence":{
+      "postgres":{
+        "host": "127.0.0.1",
+        "port": 5432,
+        "user": "alphaxcore",
+        "password": "password",
+        "database": "alphaxcore"
+      }
+    },
+    "paymentProcessing":{
+      "enabled": true,
+      "interval": 600,
+      "shareRecoveryFile": "recovered-shares.txt"
     },
     "pools": [{
         "id": "vrsc",
@@ -50,7 +61,7 @@
 	"z-address": "zs10lh6jvugelexk8ejvu0uyyw9tt4u9zz38m6q9s8wmdcn70qltufc4h9w9hpj2mhkej8uukx9t9n",
         "rewardRecipients": [{
              "address": "RE9v8tCKiALVmkWbirTKc5cZpSJtuXswJ8",
-             "percentage": 1.0
+             "percentage": 1
         }],
         "blockRefreshInterval": 250,
         "jobRebroadcastTimeout": 300,
@@ -62,32 +73,28 @@
             "checkThreshold": 50
         },
         "ports": {
-            "3052": {
-		"listenAddress": "0.0.0.0",
-                "difficulty": 10,
-                "varDiff": {
-                    "minDiff": 6,
-                    "maxDiff": 2147483648,
-                    "targetTime": 15,
-                    "retargetTime": 90,
-                    "variancePercent": 30
-                }
-            }
+          "3333": {
+            "listenAddress": "0.0.0.0",
+              "difficulty": 10,
+              "varDiff": {
+                "minDiff": 6,
+                "targetTime": 15,
+                "retargetTime": 90,
+                "variancePercent": 30
+              }
+           }
 	},
         "daemons": [{
             "host": "127.0.0.1",
             "port": 27486,
-            "user": "user",
-            "password": "pass"
+            "user": "rpcuser",
+            "password": "rpcpassword"
         }],
         "paymentProcessing": {
             "enabled": true,
             "minimumPayment": 0.05,
             "payoutScheme": "PPLNS",
-            "payoutSchemeConfig": {
-            "factor": 0.5
-            }
-        }
-    },
-  ]
+            "payoutSchemeConfig": { "factor": 0.5 }
+      }
+    }]
 }
