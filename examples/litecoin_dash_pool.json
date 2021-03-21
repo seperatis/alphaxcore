@@ -1,138 +1,144 @@
-﻿{
-    "logging": {
-        "level": "info",
-        "enableConsoleLog": true,
-        "enableConsoleColors": true,
-        "logFile": "",
-        "logBaseDirectory": "",
-        "perPoolLogFile": false
+{
+    "logging":{
+      "level": "info",
+      "enableConsoleLog": true,
+      "enableConsoleColors": true,
+      "logFile": "debug.log",
+      "logBaseDirectory": "/path to log dir",
+      "perPoolLogFile": true
     },
-    "banning": {
-        "manager": "integrated",
-        "banOnJunkReceive": true,
-        "banOnInvalidShares": false
-    },
-    "notifications": {
+    "api": {
+      "enabled": true,
+      "listenAddress": "0.0.0.0",
+      "sslConfig": {
         "enabled": true,
-        "email": {
-            "host": "smtp.example.com",
-            "port": 587,
-            "user": "user",
-            "password": "password",
-            "fromAddress": "info@yourpool.org",
-            "fromName": "support"
-        },
-        "admin": {
-            "enabled": false,
-            "emailAddress": "user@example.com",
-            "notifyBlockFound": true
-        }
+        "sslPath": "/path to pfx file",
+        "sslPassword": "pfx file password"
+      },
+      "port": 4000,
+      "adminPort": 4010
     },
-    "persistence": {
-        "postgres": {
-            "host": "127.0.0.1",
-            "port": 5432,
-            "user": "miningcore",
-            "password": "password",
-            "database": "miningcore"
-        }
+    "banning":{
+      "manager": "integrated",
+      "banOnJunkReceive": true,
+      "banOnInvalidShares": false
     },
-    "paymentProcessing": {
-        "enabled": true,
-        "interval": 600,
-        "shareRecoveryFile": "recovered-shares.txt"
+    "notifications":{
+      "enabled": false,
+      "email":{
+        "host": "smtp.example.com",
+        "port": 587,
+        "user": "user",
+        "password": "passwordhere",
+        "fromAddress": "info@yourpool.org",
+        "fromName": "support"
+      },
+      "admin":{
+        "enabled": false,
+        "emailAddress": "user@example.com",
+        "notifyBlockFound": true
+      }
+    },
+    "persistence":{
+      "postgres":{
+        "host": "127.0.0.1",
+        "port": 5432,
+        "user": "alphaxcore",
+        "password": "password",
+        "database": "alphaxcore"
+      }
+    },
+    "paymentProcessing":{
+      "enabled": true,
+      "interval": 600,
+      "shareRecoveryFile": "recovered-shares.txt"
     },
     "pools": [{
-        "id": "ltc",
-        "enabled": true,
-        "coin": "litecoin",
-        "address": "LNDA11u4HWzbJaBGiHDvs6SmA8M6avB3wH",
+      "id": "ltc",
+      "enabled": true,
+      "coin": "litecoin",
+      "address": "your wallet address",
         "rewardRecipients": [{
-            "address": "LUWYwkz6DQLVeqJqHRtGjNhWUxBvBmE3SX",
-            "percentage": 1
-        }],
-        "blockRefreshInterval": 500,
-        "jobRebroadcastTimeout": 10,
-        "clientConnectionTimeout": 600,
-        "banning": {
-            "enabled": true,
-            "time": 600,
-            "invalidPercent": 50,
-            "checkThreshold": 50
-        },
-        "ports": {
-            "3042": {
-                "listenAddress": "0.0.0.0",
-                "difficulty": 1024,
-                "name": "ASIC Mining",
-                "varDiff": {
-                    "minDiff": 512,
-                    "targetTime": 15,
-                    "retargetTime": 90,
-                    "variancePercent": 30
-                }
-            }
-        },
-        "daemons": [{
-            "host": "127.0.0.1",
-            "port": 9332,
-            "user": "user",
-            "password": "password"
-        }],
-        "paymentProcessing": {
-            "enabled": true,
-            "minimumPayment": 0.5,
-            "payoutScheme": "PPLNS",
-            "payoutSchemeConfig": {
-                "factor": 2.0
-            }
+        "address": "your wallet address",
+        "percentage": 1
+      }],
+      "blockRefreshInterval": 500,
+      "jobRebroadcastTimeout": 10,
+      "clientConnectionTimeout": 600,
+      "banning": {
+        "enabled": true,
+        "time": 600,
+        "invalidPercent": 50,
+        "checkThreshold": 50
+      },
+      "ports": {
+        "3333": {
+          "listenAddress": "0.0.0.0",
+          "difficulty": 1024,
+          "name": "ASIC Mining",
+          "varDiff": {
+            "minDiff": 512,
+            "targetTime": 15,
+            "retargetTime": 90,
+            "variancePercent": 30
+          }
         }
+      },
+      "daemons": [{
+        "host": "127.0.0.1",
+        "port": 8888,   
+        "user": "rpcuser",
+        "password": "password"
+      }],
+      "paymentProcessing": {
+        "enabled": true,
+        "minimumPayment": 0.5,
+        "payoutScheme": "PROP",
+        "payoutSchemeConfig": { "factor": 2.0 }
+      }
     },
     {
-        "id": "dash",
-        "enabled": true,
-        "coin": "dash",
-        "address": "XgmfWd5DXWGcYhxPcDPUJk44Cnh2e8tZk7",
+      "id": "dash",
+      "enabled": true,
+      "coin": "dash,
+      "address": "your wallet address",
         "rewardRecipients": [{
-            "type": "op",
-            "address": "XgmfWd5DXWGcYhxPcDPUJk44Cnh2e8tZk7",
-            "percentage": 0
-        }],
-        "blockRefreshInterval": 1000,
-        "jobRebroadcastTimeout": 55,
-        "clientConnectionTimeout": 600,
-        "banning": {
-            "enabled": true,
-            "time": 600,
-            "invalidPercent": 50,
-            "checkThreshold": 50
-        },
-        "ports": {
-            "3062": {
-                "listenAddress": "0.0.0.0",
-                "difficulty": 1024,
-                "name": "ASIC Mining",
-                "varDiff": {
-                    "minDiff": 512,
-                    "targetTime": 15,
-                    "retargetTime": 90,
-                    "variancePercent": 30
-                }
-            }
-        },
-        "daemons": [{
-            "host": "127.0.0.1",
-            "port": 9998,
-            "user": "user",
-            "password": "password"
-        }],
-        "paymentProcessing": {
-            "enabled": true,
-            "minimumPayment": 0.5,
-            "payoutScheme": "PPLNS",
-            "payoutSchemeConfig": {
-                "factor": 2.0
-            }
+        "address": "your wallet address",
+        "percentage": 1
+      }],
+      "blockRefreshInterval": 500,
+      "jobRebroadcastTimeout": 10,
+      "clientConnectionTimeout": 600,
+      "banning": {
+        "enabled": true,
+        "time": 600,
+        "invalidPercent": 50,
+        "checkThreshold": 50
+      },
+      "ports": {
+        "4444": {
+          "listenAddress": "0.0.0.0",
+          "difficulty": 1024,
+          "name": "ASIC Mining",
+          "varDiff": {
+            "minDiff": 512,
+            "targetTime": 15,
+            "retargetTime": 90,
+            "variancePercent": 30
+          }
         }
+      },
+      "daemons": [{
+        "host": "127.0.0.1",
+        "port": 8889,   
+        "user": "rpcuser",
+        "password": "password"
+      }],
+      "paymentProcessing": {
+        "enabled": true,
+        "minimumPayment": 0.5,
+        "payoutScheme": "PROP",
+        "payoutSchemeConfig": { "factor": 2.0 }
+      }
     }]
 }
