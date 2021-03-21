@@ -1,46 +1,57 @@
-  {
-    "logging": {
-        "level": "info",
-        "enableConsoleLog": true,
-        "enableConsoleColors": true,
-        "logFile": "",
-        "logBaseDirectory": "",
-        "perPoolLogFile": false
+{
+    "logging":{
+      "level": "info",
+      "enableConsoleLog": true,
+      "enableConsoleColors": true,
+      "logFile": "debug.log",
+      "logBaseDirectory": "/path to log dir",
+      "perPoolLogFile": true
     },
-    "banning": {
-        "manager": "integrated",
-        "banOnJunkReceive": true,
-        "banOnInvalidShares": false
-    },
-    "notifications": {
+    "api": {
+      "enabled": true,
+      "listenAddress": "0.0.0.0",
+      "sslConfig": {
         "enabled": true,
-        "email": {
-            "host": "smtp.example.com",
-            "port": 587,
-            "user": "user",
-            "password": "password",
-            "fromAddress": "info@yourpool.org",
-            "fromName": "support"
-        },
-        "admin": {
-            "enabled": false,
-            "emailAddress": "user@example.com",
-            "notifyBlockFound": true
-        }
+        "sslPath": "/path to pfx file",
+        "sslPassword": "pfx file password"
+      },
+      "port": 4000,
+      "adminPort": 4010
     },
-    "persistence": {
-        "postgres": {
-            "host": "127.0.0.1",
-            "port": 5432,
-            "user": "miningcore",
-            "password": "password",
-            "database": "miningcore"
-        }
+    "banning":{
+      "manager": "integrated",
+      "banOnJunkReceive": true,
+      "banOnInvalidShares": false
     },
-    "paymentProcessing": {
-        "enabled": true,
-        "interval": 600,
-        "shareRecoveryFile": "recovered-shares.txt"
+    "notifications":{
+      "enabled": false,
+      "email":{
+        "host": "smtp.example.com",
+        "port": 587,
+        "user": "user",
+        "password": "passwordhere",
+        "fromAddress": "info@yourpool.org",
+        "fromName": "support"
+      },
+      "admin":{
+        "enabled": false,
+        "emailAddress": "user@example.com",
+        "notifyBlockFound": true
+      }
+    },
+    "persistence":{
+      "postgres":{
+        "host": "127.0.0.1",
+        "port": 5432,
+        "user": "alphaxcore",
+        "password": "password",
+        "database": "alphaxcore"
+      }
+    },
+    "paymentProcessing":{
+      "enabled": true,
+      "interval": 600,
+      "shareRecoveryFile": "recovered-shares.txt"
     },
     "pools": [{
          "id": "devault",
@@ -81,17 +92,15 @@
             {
                "host": "127.0.0.1",
                "port": 8889,
-               "user": "userhere",
-               "password":"passhere"
+               "user": "rpcuser",
+               "password":"rpcpassword"
             }
          ],
          "paymentProcessing":{
             "enabled":true,
             "minimumPayment":1000,
-            "payoutScheme":"PPLNS",
-            "payoutSchemeConfig":{
-               "factor":2.0
-            },
+            "payoutScheme":"PROP", // PROP , PPLNS and SOLO supported
+            "payoutSchemeConfig":{ "factor":2.0 },
             "walletPassword":"1234"
         }
     }]
