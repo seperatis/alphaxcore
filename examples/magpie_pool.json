@@ -89,14 +89,14 @@
           "host": "127.0.0.1",
           "port": 8888,
           "user": "rpcuser",
-          "password": "rpcpassword
+          "password": "rpcpassword",
+          "minimumConfirmations": 341
       }],
       "paymentProcessing": {
         "enabled": true,
         "minimumPayment": 100,
         "payoutScheme": "PROP",
-        "payoutSchemeConfig": { "factor": 2.0 },
-        "minimumConfirmations": 341
+        "payoutSchemeConfig": { "factor": 2.0 }
       }
    }]
 }
