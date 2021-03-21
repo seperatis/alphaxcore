@@ -56,7 +56,7 @@
     "pools": [{
       "id": "bsv",
       "enabled": true,
-      "coin": "bitcoinsv",
+      "coin": "bitcoin-sv",
       "address": "your wallet address",
       "rewardRecipients": [{
               "address": "your wallet address",
@@ -93,8 +93,8 @@
       "paymentProcessing": {
         "enabled": true,
         "minimumPayment": 0.1,
-        "payoutScheme": "PROP", // PROP , PPLNS and SOLO supported
-        "payoutSchemeConfig": { "factor": 2.0 },
+        "payoutScheme": "PROP", // PROP PPLNS SOLO supported
+        "payoutSchemeConfig": { "factor": 2.0 }
       }
    }]
 }
