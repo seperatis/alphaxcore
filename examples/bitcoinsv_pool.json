@@ -48,7 +48,6 @@
           "database": "alphaxcore"
        }
     },
-    "equihashMaxThreads": 4,
     "paymentProcessing":{
        "enabled": true,
        "interval": 600,
