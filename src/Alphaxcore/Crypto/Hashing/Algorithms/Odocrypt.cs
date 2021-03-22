@@ -34,7 +34,7 @@ namespace Alphaxcore.Crypto.Hashing.Algorithms
         public uint OdoCryptShapeChangeInterval { get; set; }
     };
 
-    public unsafe class OdoCrypt : IHashAlgorithm
+    public unsafe class Odocrypt : IHashAlgorithm
     {
         private static ConditionalWeakTable<BitcoinNetworkParams, OdoCryptConfig> configs = new ConditionalWeakTable<BitcoinNetworkParams, OdoCryptConfig>();
 
