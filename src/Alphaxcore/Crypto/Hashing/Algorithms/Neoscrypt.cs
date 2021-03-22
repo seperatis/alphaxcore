@@ -28,7 +28,7 @@ namespace Alphaxcore.Crypto.Hashing.Algorithms
 {
     public unsafe class Neoscrypt : IHashAlgorithm
     {
-        public NeoScrypt(uint profile)
+        public Neoscrypt(uint profile)
         {
             this.profile = profile;
         }
