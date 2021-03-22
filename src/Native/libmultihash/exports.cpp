@@ -19,6 +19,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#include "astralhash.h"
 #include "balloon.h"
 #include "bcrypt.h"
 #include "blake.h"
@@ -28,9 +29,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "fresh.h"
 #include "fugue.h"
 #include "geek.h"
+#include "globalhash.h"
 #include "groestl.h"
 #include "hashodo.h"
 #include "hefty1.h"
+#include "jeonghash.h"
 #include "jh.h"
 #include "keccak.h"
 #include "Lyra2.h"
@@ -43,6 +46,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "lyra2z330.h"
 #include "neoscrypt.h"
 #include "nist5.h"
+#include "padihash.h"
+#include "pawelhash.h"
 #include "phi.h"
 #include "phi2.h"
 #include "phi5.h"
@@ -89,6 +94,11 @@ extern "C" bool ethash_get_default_dirname(char* strbuf, size_t buffsize);
 #else
 #define MODULE_API
 #endif
+
+extern "C" MODULE_API void astralhash_export(const char* input, char* output, uint32_t input_len)
+{
+	astralhash_hash(input, output, input_len);
+}
 
 extern "C" MODULE_API void balloon_export(const char* input, char* output, uint32_t input_len)
 {
@@ -140,6 +150,11 @@ extern "C" MODULE_API void geek_export(const char* input, char* output, uint32_t
 	geek_hash(input, output, input_len);
 }
 
+extern "C" MODULE_API void globalhash_export(const char* input, char* output, uint32_t input_len)
+{
+	globalhash_hash(input, output, input_len);
+}
+
 extern "C" MODULE_API void groestl_export(const char* input, char* output, uint32_t input_len)
 {
 	groestl_hash(input, output, input_len);
@@ -153,6 +168,11 @@ extern "C" MODULE_API void groestl_myriad_export(const char* input, char* output
 extern "C" MODULE_API void hefty1_export(const char* input, char* output, uint32_t input_len)
 {
 	hefty1_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void jeonghash_export(const char* input, char* output, uint32_t input_len)
+{
+	jeonghash_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void jh_export(const char* input, char* output, uint32_t input_len)
@@ -208,6 +228,16 @@ extern "C" MODULE_API void nist5_export(const char* input, char* output, uint32_
 extern "C" MODULE_API void odocrypt_export(const char* input, char* output, uint32_t input_len, uint32_t key)
 {
     odocrypt_hash(input, output, input_len, key);
+}
+
+extern "C" MODULE_API void padihash_export(const char* input, char* output, uint32_t input_len)
+{
+	padihash_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void pawelhash_export(const char* input, char* output, uint32_t input_len)
+{
+	pawelhash_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void phi_export(const char* input, char* output, uint32_t input_len)
