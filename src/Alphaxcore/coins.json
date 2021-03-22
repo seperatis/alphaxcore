@@ -967,7 +967,7 @@
             "hash": "sha256d"
         },
         "headerHasher": {
-            "hash": "yespower_mgpc"
+            "hash": "yespowermgpc"
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1365,7 +1365,7 @@
             "hash": "sha256d"
         },
         "headerHasher": {
-            "hash": "yespower_sugar"
+            "hash": "yespowersugar"
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1422,7 +1422,7 @@
             "hash": "sha256d"
         },
         "headerHasher": {
-            "hash": "yespower_tide"
+            "hash": "yespowertide"
         },
         "blockHasher": {
             "hash": "reverse",
@@ -1747,11 +1747,11 @@
             "hash": "sha256d"
         },
         "headerHasher": {
-            "hash": "yespower_r16"
+            "hash": "yespowerr16"
         },
         "blockHasher": {
             "hash": "reverse",
-            "args": [ { "hash": "yespower_r16" } ]
+            "args": [ { "hash": "yespowerr16" } ]
         },
         "shareMultiplier": 65536,
         "explorerBlockLink": "http://ytn.ccore.online/block/$height$",
