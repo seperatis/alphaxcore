@@ -5,11 +5,13 @@ LDFLAGS = -shared
 LDLIBS = -lsodium
 TARGET  = libmultihash.so
 
-OBJECTS = balloon.o bcrypt.o blake.o blake2s.o c11.o dcrypt.o exports.o fresh.o fugue.o geek.o groestl.o hefty1.o jh.o \
+OBJECTS = astralhash.o balloon.o bcrypt.o blake.o blake2s.o c11.o dcrypt.o exports.o fresh.o fugue.o geek.o globalhash.o groestl.o hefty1.o jh.o jeonghash.o \
           KeccakP-800-reference.o keccak.o lane.o Lyra2.o Lyra2-z.o lyra2re.o lyra2v2.o lyra2v3.o lyra2z.o lyra2z330.o lyra2vc0ban.o \
-	      neoscrypt.o nist5.o odocrypt.o phi.o phi2.o phi5.o quark.o qubit.o s3.o scryptn.o sha256.o sha256csm.o sha256-d.o sha256_Y.o shavite3.o skein.o Sponge.o \
+	      neoscrypt.o nist5.o odocrypt.o padihash.o pawelhash.o phi.o phi2.o phi5.o quark.o qubit.o s3.o \
+		  scryptn.o sha256.o sha256csm.o sha256-d.o sha256_Y.o shavite3.o skein.o Sponge.o \
 	      x11.o x11evo.o x11k.o x11kvs.o x12.o x13.o x14.o x15.o x16r.o x16rt.o x16rv2.o x16s.o x17.o x17r.o x18.o x20r.o x21s.o x22.o x22i.o x25x.o \
 		  yescrypt.o yescrypt-opt.o \
+		  blake2-ref/blake2b.o blake2-ref/blake2s.o \
           sha3/SWIFFTX.o sha3/aes_helper.o sha3/extra.o sha3/hamsi_helper.o \
           sha3/sph_blake.o sha3/sph_blake2s.o sha3/sph_bmw.o sha3/sph_cubehash.o sha3/sph_echo.o sha3/sph_fugue.o sha3/sph_gost.o sha3/sph_groestl.o \
           sha3/sph_hamsi.o sha3/sph_haval.o sha3/sph_hefty1.o sha3/sph_jh.o sha3/sph_keccak.o sha3/sph_luffa.o sha3/sph_panama.o \
