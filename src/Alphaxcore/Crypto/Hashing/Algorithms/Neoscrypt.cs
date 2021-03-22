@@ -26,7 +26,7 @@ using Alphaxcore.Native;
 
 namespace Alphaxcore.Crypto.Hashing.Algorithms
 {
-    public unsafe class NeoScrypt : IHashAlgorithm
+    public unsafe class Neoscrypt : IHashAlgorithm
     {
         public NeoScrypt(uint profile)
         {
