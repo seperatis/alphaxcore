@@ -1,5 +1,5 @@
-#ifndef JOENGHASH_H
-#define JOENGHASH_H
+#ifndef JEONGHASH_H
+#define JEONGHASH_H
 
 #ifdef __cplusplus
 extern "C" {
