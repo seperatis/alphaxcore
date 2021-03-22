@@ -174,8 +174,8 @@ namespace Alphaxcore.Native
         [DllImport("libmultihash", EntryPoint = "x17_export", CallingConvention = CallingConvention.Cdecl)]
         public static extern int x17(byte* input, void* output, uint inputLength);
         
-        [DllImport("libmultihash", EntryPoint = "x17s_export", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int x17s(byte* input, void* output, uint inputLength);
+        [DllImport("libmultihash", EntryPoint = "x17r_export", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int x17r(byte* input, void* output, uint inputLength);
         
         [DllImport("libmultihash", EntryPoint = "x18_export", CallingConvention = CallingConvention.Cdecl)]
         public static extern int x18(byte* input, void* output, uint inputLength);
