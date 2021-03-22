@@ -19,33 +19,23 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "bcrypt.h"
+#include "astralhash.h"
 #include "balloon.h"
-#include "keccak.h"
-#include "quark.h"
-#include "scryptjane.h"
-#include "scryptn.h"
-#include "neoscrypt.h"
-#include "skein.h"
-#include "x11.h"
-#include "groestl.h"
+#include "bcrypt.h"
 #include "blake.h"
 #include "blake2s.h"
+#include "c11.h"
+#include "dcrypt.h"
+#include "fresh.h"
 #include "fugue.h"
 #include "geek.h"
-#include "qubit.h"
-#include "s3.h"
+#include "globalhash.h"
+#include "groestl.h"
+#include "hashodo.h"
 #include "hefty1.h"
-#include "shavite3.h"
-#include "x13.h"
-#include "x14.h"
-#include "nist5.h"
-#include "x15.h"
-#include "x17.h"
-#include "fresh.h"
-#include "dcrypt.h"
+#include "jeonghash.h"
 #include "jh.h"
-#include "c11.h"
+#include "keccak.h"
 #include "Lyra2.h"
 #include "Lyra2-z.h"
 #include "lyra2re.h"
@@ -54,23 +44,48 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "lyra2vc0ban.h"
 #include "lyra2z.h"
 #include "lyra2z330.h"
+#include "neoscrypt.h"
+#include "nist5.h"
+#include "padihash.h"
+#include "pawelhash.h"
+#include "phi.h"
+#include "phi2.h"
+#include "phi5.h"
+#include "quark.h"
+#include "qubit.h"
+#include "s3.h"
+#include "scryptjane.h"
+#include "scryptn.h"
+#include "sha256csm.h"
+#include "shavite3.h"
+#include "skein.h"
+#include "x11.h"
+#include "x11evo.h"
+#include "x11k.h"
+#include "x11kvs.h"
+#include "x12.h"
+#include "x13.h"
+#include "x14.h"
+#include "x15.h"
 #include "x16r.h"
+#include "x16rt.h"
 #include "x16rv2.h"
 #include "x16s.h"
+#include "x17.h"
+#include "x17r.h"
+#include "x18.h"
+#include "x20r.h"
 #include "x21s.h"
+#include "x22.h"
+#include "x22i.h"
 #include "x25x.h"
-#include "hashodo.h"
+#include "yescrypt.h"
 #include "equi/equihashverify.h"
 #include "libethash/sha3.h"
 #include "libethash/internal.h"
 #include "libethash/ethash.h"
 #include "verushash/verus_hash.h"
-#include "yescrypt.h"
 #include "yespower/yespower.h"
-#include "sha256csm.h"
-#include "phi.h"
-#include "phi2.h"
-#include "phi5.h"
 
 extern "C" bool ethash_get_default_dirname(char* strbuf, size_t buffsize);
 
@@ -80,81 +95,19 @@ extern "C" bool ethash_get_default_dirname(char* strbuf, size_t buffsize);
 #define MODULE_API
 #endif
 
-extern "C" MODULE_API void scrypt_export(const char* input, char* output, uint32_t N, uint32_t R, uint32_t input_len)
+extern "C" MODULE_API void astralhash_export(const char* input, char* output, uint32_t input_len)
 {
-	scrypt_N_R_1_256(input, output, N, R, input_len);
-}
-
-extern "C" MODULE_API void quark_export(const char* input, char* output, uint32_t input_len)
-{
-	quark_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void x11_export(const char* input, char* output, uint32_t input_len)
-{
-	x11_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void x13_export(const char* input, char* output, uint32_t input_len)
-{
-    x13_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void x13_bcd_export(const char* input, char* output)
-{
-    x13_bcd_hash(input, output);
-}
-
-extern "C" MODULE_API void x17_export(const char* input, char* output, uint32_t input_len)
-{
-    x17_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void x15_export(const char* input, char* output, uint32_t input_len)
-{
-	x15_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void neoscrypt_export(const unsigned char* input, unsigned char* output, uint32_t profile)
-{
-	neoscrypt(input, output, profile);
-}
-
-extern "C" MODULE_API void scryptn_export(const char* input, char* output, uint32_t nFactor, uint32_t input_len)
-{
-	unsigned int N = 1 << nFactor;
-
-	scrypt_N_R_1_256(input, output, N, 1, input_len); //hardcode for now to R=1 for now
-}
-
-extern "C" MODULE_API void keccak_export(const char* input, char* output, uint32_t input_len)
-{
-	keccak_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void bcrypt_export(const char* input, char* output, uint32_t input_len)
-{
-	bcrypt_hash(input, output);
-}
-
-extern "C" MODULE_API void skein_export(const char* input, char* output, uint32_t input_len)
-{
-	skein_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void groestl_export(const char* input, char* output, uint32_t input_len)
-{
-	groestl_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void groestl_myriad_export(const char* input, char* output, uint32_t input_len)
-{
-	groestlmyriad_hash(input, output, input_len);
+	astralhash_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void balloon_export(const char* input, char* output, uint32_t input_len)
 {
 	balloon(input, output, input_len);
+}
+
+extern "C" MODULE_API void bcrypt_export(const char* input, char* output, uint32_t input_len)
+{
+	bcrypt_hash(input, output);
 }
 
 extern "C" MODULE_API void blake_export(const char* input, char* output, uint32_t input_len)
@@ -167,9 +120,24 @@ extern "C" MODULE_API void blake2s_export(const char* input, char* output, uint3
     blake2s_hash(input, output, input_len);
 }
 
+extern "C" MODULE_API void c11_export(const char* input, char* output)
+{
+	c11_hash(input, output);
+}
+
+extern "C" MODULE_API void cpupower_export(const char* input, char* output, uint32_t input_len)
+{
+    cpupower_hash(input, output, input_len);
+}
+
 extern "C" MODULE_API void dcrypt_export(const char* input, char* output, uint32_t input_len)
 {
 	dcrypt_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void fresh_export(const char* input, char* output, uint32_t input_len)
+{
+	fresh_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void fugue_export(const char* input, char* output, uint32_t input_len)
@@ -182,14 +150,19 @@ extern "C" MODULE_API void geek_export(const char* input, char* output, uint32_t
 	geek_hash(input, output, input_len);
 }
 
-extern "C" MODULE_API void qubit_export(const char* input, char* output, uint32_t input_len)
+extern "C" MODULE_API void globalhash_export(const char* input, char* output, uint32_t input_len)
 {
-	qubit_hash(input, output, input_len);
+	globalhash_hash(input, output, input_len);
 }
 
-extern "C" MODULE_API void s3_export(const char* input, char* output, uint32_t input_len)
+extern "C" MODULE_API void groestl_export(const char* input, char* output, uint32_t input_len)
 {
-	s3_hash(input, output, input_len);
+	groestl_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void groestl_myriad_export(const char* input, char* output, uint32_t input_len)
+{
+	groestlmyriad_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void hefty1_export(const char* input, char* output, uint32_t input_len)
@@ -197,19 +170,9 @@ extern "C" MODULE_API void hefty1_export(const char* input, char* output, uint32
 	hefty1_hash(input, output, input_len);
 }
 
-extern "C" MODULE_API void shavite3_export(const char* input, char* output, uint32_t input_len)
+extern "C" MODULE_API void jeonghash_export(const char* input, char* output, uint32_t input_len)
 {
-	shavite3_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void nist5_export(const char* input, char* output, uint32_t input_len)
-{
-	nist5_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void fresh_export(const char* input, char* output, uint32_t input_len)
-{
-	fresh_hash(input, output, input_len);
+	jeonghash_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void jh_export(const char* input, char* output, uint32_t input_len)
@@ -217,9 +180,9 @@ extern "C" MODULE_API void jh_export(const char* input, char* output, uint32_t i
 	jh_hash(input, output, input_len);
 }
 
-extern "C" MODULE_API void c11_export(const char* input, char* output)
+extern "C" MODULE_API void keccak_export(const char* input, char* output, uint32_t input_len)
 {
-	c11_hash(input, output);
+	keccak_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void lyra2re_export(const char* input, char* output, uint32_t input_len)
@@ -252,24 +215,14 @@ extern "C" MODULE_API void lyra2z330_export(const char* input, char* output, uin
 	lyra2z330_hash(input, output, input_len);
 }
 
-extern "C" MODULE_API void x16r_export(const char* input, char* output, uint32_t input_len)
+extern "C" MODULE_API void neoscrypt_export(const unsigned char* input, unsigned char* output, uint32_t profile)
 {
-    x16r_hash(input, output, input_len);
+	neoscrypt(input, output, profile);
 }
 
-extern "C" MODULE_API void x16rv2_export(const char* input, char* output, uint32_t input_len)
+extern "C" MODULE_API void nist5_export(const char* input, char* output, uint32_t input_len)
 {
-    x16rv2_hash(input, output,input_len);
-}
-
-extern "C" MODULE_API void x21s_export(const char* input, char* output, uint32_t input_len)
-{
-	x21s_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void x25x_export(const char* input, char* output, uint32_t input_len)
-{
-    x25x_hash(input, output, input_len);
+	nist5_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void odocrypt_export(const char* input, char* output, uint32_t input_len, uint32_t key)
@@ -277,9 +230,176 @@ extern "C" MODULE_API void odocrypt_export(const char* input, char* output, uint
     odocrypt_hash(input, output, input_len, key);
 }
 
+extern "C" MODULE_API void padihash_export(const char* input, char* output, uint32_t input_len)
+{
+	padihash_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void pawelhash_export(const char* input, char* output, uint32_t input_len)
+{
+	pawelhash_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void phi_export(const char* input, char* output, uint32_t input_len)
+{
+	phi_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void phi2_export(const char* input, char* output, uint32_t input_len)
+{
+	phi2_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void phi5_export(const char* input, char* output, uint32_t input_len)
+{
+	phi5_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void quark_export(const char* input, char* output, uint32_t input_len)
+{
+	quark_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void qubit_export(const char* input, char* output, uint32_t input_len)
+{
+	qubit_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void s3_export(const char* input, char* output, uint32_t input_len)
+{
+	s3_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void scrypt_export(const char* input, char* output, uint32_t N, uint32_t R, uint32_t input_len)
+{
+	scrypt_N_R_1_256(input, output, N, R, input_len);
+}
+
+extern "C" MODULE_API void scryptn_export(const char* input, char* output, uint32_t nFactor, uint32_t input_len)
+{
+	unsigned int N = 1 << nFactor;
+
+	scrypt_N_R_1_256(input, output, N, 1, input_len); //hardcode for now to R=1 for now
+}
+
+extern "C" MODULE_API void sha256csm_export(const char* input, char* output, uint32_t input_len)
+{
+	sha256csm_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void shavite3_export(const char* input, char* output, uint32_t input_len)
+{
+	shavite3_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void skein_export(const char* input, char* output, uint32_t input_len)
+{
+	skein_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x11_export(const char* input, char* output, uint32_t input_len)
+{
+	x11_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x11evo_export(const char* input, char* output, uint32_t input_len)
+{
+	x11evo_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x11k_export(const char* input, char* output, uint32_t input_len)
+{
+	x11k_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x11kvs_export(const char* input, char* output, uint32_t input_len)
+{
+	x11kvs_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x12_export(const char* input, char* output, uint32_t input_len)
+{
+	x12_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x13_export(const char* input, char* output, uint32_t input_len)
+{
+    x13_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x13_bcd_export(const char* input, char* output)
+{
+    x13_bcd_hash(input, output);
+}
+
+extern "C" MODULE_API void x14_export(const char* input, char* output, uint32_t input_len)
+{
+    x14_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x15_export(const char* input, char* output, uint32_t input_len)
+{
+	x15_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x16r_export(const char* input, char* output, uint32_t input_len)
+{
+    x16r_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x16rt_export(const char* input, char* output, uint32_t input_len)
+{
+    x16rt_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x16rv2_export(const char* input, char* output, uint32_t input_len)
+{
+    x16rv2_hash(input, output,input_len);
+}
+
 extern "C" MODULE_API void x16s_export(const char* input, char* output, uint32_t input_len)
 {
     x16s_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x17_export(const char* input, char* output, uint32_t input_len)
+{
+    x17_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x17r_export(const char* input, char* output, uint32_t input_len)
+{
+    x17r_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x18_export(const char* input, char* output, uint32_t input_len)
+{
+    x18_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x20r_export(const char* input, char* output, uint32_t input_len)
+{
+    x20r_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x21s_export(const char* input, char* output, uint32_t input_len)
+{
+	x21s_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x22_export(const char* input, char* output, uint32_t input_len)
+{
+    x22_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x22i_export(const char* input, char* output, uint32_t input_len)
+{
+    x22i_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void x25x_export(const char* input, char* output, uint32_t input_len)
+{
+    x25x_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void yescrypt_export(const char* input, char* output, uint32_t input_len)
@@ -322,6 +442,11 @@ extern "C" MODULE_API void yespower_iots_export(const char* input, char* output,
     yespowerIOTS_hash(input, output, input_len);
 }
 
+extern "C" MODULE_API void yespower_litb_export(const char* input, char* output, uint32_t input_len)
+{
+    yespowerLITB_hash(input, output, input_len);
+}
+
 extern "C" MODULE_API void yespower_ltncg_export(const char* input, char* output, uint32_t input_len)
 {
     yespowerLTNCG_hash(input, output, input_len);
@@ -347,44 +472,14 @@ extern "C" MODULE_API void yespower_sugar_export(const char* input, char* output
     yespowerSUGAR_hash(input, output, input_len);
 }
 
-extern "C" MODULE_API void yespower_urx_export(const char* input, char* output, uint32_t input_len)
-{
-    yespowerURX_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void yespower_litb_export(const char* input, char* output, uint32_t input_len)
-{
-    yespowerLITB_hash(input, output, input_len);
-}
-
 extern "C" MODULE_API void yespower_tide_export(const char* input, char* output, uint32_t input_len)
 {
     yespowerTIDE_hash(input, output, input_len);
 }
 
-extern "C" MODULE_API void cpupower_export(const char* input, char* output, uint32_t input_len)
+extern "C" MODULE_API void yespower_urx_export(const char* input, char* output, uint32_t input_len)
 {
-    cpupower_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void sha256csm_export(const char* input, char* output, uint32_t input_len)
-{
-	sha256csm_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void phi_export(const char* input, char* output, uint32_t input_len)
-{
-	phi_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void phi2_export(const char* input, char* output, uint32_t input_len)
-{
-	phi2_hash(input, output, input_len);
-}
-
-extern "C" MODULE_API void phi5_export(const char* input, char* output, uint32_t input_len)
-{
-	phi5_hash(input, output, input_len);
+    yespowerURX_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API bool equihash_verify_200_9_export(const char* header, int header_length, const char* solution, int solution_length, const char *personalization)

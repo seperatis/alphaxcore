@@ -1,5 +1,5 @@
-#ifndef X14_H
-#define X14_H
+#ifndef X11EVO_H
+#define X11EVO_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -7,7 +7,7 @@ extern "C" {
 
 #include <stdint.h>
 
-void x14_hash(const char* input, char* output, uint32_t len);
+void x11evo_hash(const char* input, char* output, uint32_t len);
 
 #ifdef __cplusplus
 }
