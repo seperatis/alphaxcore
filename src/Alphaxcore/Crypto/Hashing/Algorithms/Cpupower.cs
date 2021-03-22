@@ -26,7 +26,7 @@ using Alphaxcore.Native;
 
 namespace Alphaxcore.Crypto.Hashing.Algorithms
 {
-    public unsafe class CpuPower : IHashAlgorithm
+    public unsafe class Cpupower : IHashAlgorithm
     {
         public void Digest(ReadOnlySpan<byte> data, Span<byte> result, params object[] extra)
         {
