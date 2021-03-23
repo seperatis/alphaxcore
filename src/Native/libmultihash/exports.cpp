@@ -255,7 +255,7 @@ extern "C" MODULE_API void phi5_export(const char* input, char* output, uint32_t
 	phi5_hash(input, output, input_len);
 }
 
-extern "C" MODULE_API void powerb2_export(const char* input, char* output, uint32_t input_len)
+extern "C" MODULE_API void power2b_export(const char* input, char* output, uint32_t input_len)
 {
     power2b_hash(input, output, input_len);
 }
