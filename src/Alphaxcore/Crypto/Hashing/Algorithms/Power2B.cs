@@ -26,7 +26,7 @@ using Alphaxcore.Native;
 
 namespace Alphaxcore.Crypto.Hashing.Algorithms
 {
-    public unsafe class YespowerB2 : IHashAlgorithm
+    public unsafe class Power2B : IHashAlgorithm
     {
         public void Digest(ReadOnlySpan<byte> data, Span<byte> result, params object[] extra)
         {
@@ -36,7 +36,7 @@ namespace Alphaxcore.Crypto.Hashing.Algorithms
             {
                 fixed (byte* output = result)
                 {
-                    LibMultihash.yespower_b2(input, output, (uint) data.Length);
+                    LibMultihash.power2b(input, output, (uint) data.Length);
                 }
             }
         }
