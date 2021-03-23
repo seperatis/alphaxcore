@@ -123,6 +123,9 @@ namespace Alphaxcore.Native
         [DllImport("libmultihash", EntryPoint = "phi5_export", CallingConvention = CallingConvention.Cdecl)]
         public static extern int phi5(byte* input, void* output, uint inputLength);
         
+        [DllImport("libmultihash", EntryPoint = "power2b_export", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int power2b(byte* input, void* output, uint inputLength);
+        
         [DllImport("libmultihash", EntryPoint = "quark_export", CallingConvention = CallingConvention.Cdecl)]
         public static extern int quark(byte* input, void* output, uint inputLength);
         
@@ -225,9 +228,6 @@ namespace Alphaxcore.Native
         [DllImport("libmultihash", EntryPoint = "yespower_export", CallingConvention = CallingConvention.Cdecl)]
         public static extern int yespower(byte* input, void* output, uint inputLength);
 
-        [DllImport("libmultihash", EntryPoint = "yespower_b2_export", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int yespower_b2(byte* input, void* output, uint inputLength);
-        
         [DllImport("libmultihash", EntryPoint = "yespower_ic_export", CallingConvention = CallingConvention.Cdecl)]
         public static extern int yespower_ic(byte* input, void* output, uint inputLength);
         
