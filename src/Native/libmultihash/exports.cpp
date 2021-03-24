@@ -81,6 +81,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "x25x.h"
 #include "yescrypt.h"
 #include "equi/equihashverify.h"
+#include "heavyhash/heavyhash.h"
 #include "libethash/sha3.h"
 #include "libethash/internal.h"
 #include "libethash/ethash.h"
@@ -163,6 +164,11 @@ extern "C" MODULE_API void groestl_export(const char* input, char* output, uint3
 extern "C" MODULE_API void groestl_myriad_export(const char* input, char* output, uint32_t input_len)
 {
 	groestlmyriad_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void heavyhash_export(const char* input, char* output, uint32_t input_len)
+{
+	heavyhash_hash(input, output, input_len);
 }
 
 extern "C" MODULE_API void hefty1_export(const char* input, char* output, uint32_t input_len)
