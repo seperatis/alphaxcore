@@ -11,7 +11,7 @@ OBJECTS = astralhash.o balloon.o bcrypt.o blake.o blake2s.o c11.o dcrypt.o expor
 		  scryptn.o sha256.o sha256csm.o sha256-d.o sha256_Y.o shavite3.o skein.o Sponge.o \
 	      x11.o x11evo.o x11k.o x11kvs.o x12.o x13.o x14.o x15.o x16r.o x16rt.o x16rv2.o x16s.o x17.o x17r.o x18.o x20r.o x21s.o x22.o x22i.o x25x.o \
 		  yescrypt.o yescrypt-opt.o \
-          blake2-ref/blake2b.o sha3/SWIFFTX.o sha3/aes_helper.o sha3/extra.o sha3/hamsi_helper.o \
+          blake2-ref/blake2b.o heavyhash/heavyhash.o heavyhash/keccak_tiny.o sha3/SWIFFTX.o sha3/aes_helper.o sha3/extra.o sha3/hamsi_helper.o \
           sha3/sph_blake.o sha3/sph_blake2s.o sha3/sph_bmw.o sha3/sph_cubehash.o sha3/sph_echo.o sha3/sph_fugue.o sha3/sph_gost.o sha3/sph_groestl.o \
           sha3/sph_hamsi.o sha3/sph_haval.o sha3/sph_hefty1.o sha3/sph_jh.o sha3/sph_keccak.o sha3/sph_luffa.o sha3/sph_panama.o \
           sha3/sph_radiogatun.o sha3/sph_ripemd.o sha3/sph_sha2.o sha3/sph_sha2big.o sha3/sph_shabal.o sha3/sph_shavite.o \
