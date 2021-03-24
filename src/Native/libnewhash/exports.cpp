@@ -19,6 +19,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#include "gr.h"
 #include "heavyhash/heavyhash.h"
 
 #ifdef _WIN32
@@ -26,6 +27,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #else
 #define MODULE_API
 #endif
+
+extern "C" MODULE_API void ghostrider_export(const char* input, char* output, uint32_t input_len)
+{
+	gr_hash(input, output, input_len);
+}
 
 extern "C" MODULE_API void heavyhash_export(const char* input, char* output, uint32_t input_len)
 {
