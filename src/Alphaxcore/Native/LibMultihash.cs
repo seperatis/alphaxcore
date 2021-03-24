@@ -69,9 +69,6 @@ namespace Alphaxcore.Native
         [DllImport("libmultihash", EntryPoint = "groestl_myriad_export", CallingConvention = CallingConvention.Cdecl)]
         public static extern int groestl_myriad(byte* input, void* output, uint inputLength);
         
-        [DllImport("libmultihash", EntryPoint = "heavyhash_export", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int heavyhash(byte* input, void* output, uint inputLength);
-        
         [DllImport("libmultihash", EntryPoint = "hefty1_export", CallingConvention = CallingConvention.Cdecl)]
         public static extern int hefty1(byte* input, void* output, uint inputLength);
         
