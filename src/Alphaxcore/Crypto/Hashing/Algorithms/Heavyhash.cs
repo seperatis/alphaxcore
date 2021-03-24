@@ -36,7 +36,7 @@ namespace Alphaxcore.Crypto.Hashing.Algorithms
             {
                 fixed (byte* output = result)
                 {
-                    LibMultihash.heavyhash(input, output, (uint) data.Length);
+                    LibNewhash.heavyhash(input, output, (uint) data.Length);
                 }
             }
         }
