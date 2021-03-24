@@ -19,3 +19,15 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#include "heavyhash/heavyhash.h"
+
+#ifdef _WIN32
+#define MODULE_API __declspec(dllexport)
+#else
+#define MODULE_API
+#endif
+
+extern "C" MODULE_API void heavyhash_export(const char* input, char* output, uint32_t input_len)
+{
+	heavyhash_hash(input, output, input_len);
+}
