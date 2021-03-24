@@ -20,7 +20,7 @@ OBJECTS = astralhash.o balloon.o bcrypt.o blake.o blake2s.o c11.o dcrypt.o expor
           equi/util.o equi/support/cleanse.o equi/random.o equi/uint256.o equi/arith_uint256.o equi/crypto/hmac_sha512.o \
           equi/crypto/sha1.o equi/crypto/sha512.o equi/crypto/sha256.o equi/crypto/hmac_sha256.o equi/crypto/equihash.o \
 	      equi/crypto/ripemd160.o equi/equihashverify.o \
-          libethash/internal.o libethash/io.o libethash/io_posix.o libethash/sha3.o \
+          libethash/internal.o libethash/io.o libethash/io_posix.o \
           verushash/haraka.o verushash/haraka_portable.o verushash/utilstrencodings.o \
           verushash/verus_hash.o verushash/verus_clhash.o verushash/verus_clhash_portable.o
 
