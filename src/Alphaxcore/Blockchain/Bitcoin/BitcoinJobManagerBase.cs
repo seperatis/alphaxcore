@@ -307,7 +307,7 @@ namespace Alphaxcore.Blockchain.Bitcoin
             // was it accepted?
             var acceptResult = results[1];
             var block = acceptResult.Response?.ToObject<DaemonResponses.Block>();
-            var accepted = block?.Hash;
+            var accepted = acceptResult.Error == null && block?.Hash == share.BlockHash;
 
             if(!accepted)
             {
