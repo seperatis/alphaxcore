@@ -315,7 +315,7 @@ namespace Alphaxcore.Blockchain.Bitcoin
             //     messageBus.SendMessage(new AdminNotification($"[{share.PoolId.ToUpper()}]-[{share.Source}] Block submission failed", $"[{share.PoolId.ToUpper()}]-[{share.Source}] Block {share.BlockHeight} submission failed for pool {poolConfig.Id} because block was not found after submission"));
             // }
 
-            return (accepted, block?.Transactions.FirstOrDefault());
+            return (block?.Transactions.FirstOrDefault());
         }
 
         protected virtual async Task<bool> AreDaemonsHealthyLegacyAsync()
