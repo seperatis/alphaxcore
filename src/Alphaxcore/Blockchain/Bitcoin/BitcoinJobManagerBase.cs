@@ -289,7 +289,7 @@ namespace Alphaxcore.Blockchain.Bitcoin
                 hasSubmitBlockMethod
                     ? new DaemonCmd(BitcoinCommands.SubmitBlock, new[] { blockHex })
                     : new DaemonCmd(BitcoinCommands.GetBlockTemplate, new { mode = "submit", data = blockHex }),
-                new DaemonCmd(BitcoinCommands.GetBlock, new[] { share.BlockHash }));
+                    new DaemonCmd(BitcoinCommands.GetBlock, new[] { share.BlockHash }));
 
             // did submission succeed?
             var submitResult = results[0];
@@ -305,15 +305,15 @@ namespace Alphaxcore.Blockchain.Bitcoin
             }
 
             // was it accepted?
-            var acceptResult = results[1];
-            var block = acceptResult.Response?.ToObject<DaemonResponses.Block>();
-            var accepted = acceptResult.Error == null && block?.Hash == share.BlockHash;
+            // var acceptResult = results[1];
+            // var block = acceptResult.Response?.ToObject<DaemonResponses.Block>();
+            // var accepted = acceptResult.Error == null && block?.Hash == share.BlockHash;
 
-            if(!accepted)
-            {
-                logger.Warn(() => $"Block {share.BlockHeight} submission failed for pool {poolConfig.Id} because block was not found after submission");
-                messageBus.SendMessage(new AdminNotification($"[{share.PoolId.ToUpper()}]-[{share.Source}] Block submission failed", $"[{share.PoolId.ToUpper()}]-[{share.Source}] Block {share.BlockHeight} submission failed for pool {poolConfig.Id} because block was not found after submission"));
-            }
+            // if(!accepted)
+            // {
+            //     logger.Warn(() => $"Block {share.BlockHeight} submission failed for pool {poolConfig.Id} because block was not found after submission");
+            //     messageBus.SendMessage(new AdminNotification($"[{share.PoolId.ToUpper()}]-[{share.Source}] Block submission failed", $"[{share.PoolId.ToUpper()}]-[{share.Source}] Block {share.BlockHeight} submission failed for pool {poolConfig.Id} because block was not found after submission"));
+            // }
 
             return (accepted, block?.Transactions.FirstOrDefault());
         }
