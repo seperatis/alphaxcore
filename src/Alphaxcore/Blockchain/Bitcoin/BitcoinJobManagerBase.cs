@@ -307,15 +307,15 @@ namespace Alphaxcore.Blockchain.Bitcoin
             // was it accepted?
             var acceptResult = results[1];
             var block = acceptResult.Response?.ToObject<DaemonResponses.Block>();
-            // var accepted = acceptResult.Error == null && block?.Hash == share.BlockHash;
+            var accepted = block?.Hash;
 
-            // if(!accepted)
-            // {
-            //     logger.Warn(() => $"Block {share.BlockHeight} submission failed for pool {poolConfig.Id} because block was not found after submission");
-            //     messageBus.SendMessage(new AdminNotification($"[{share.PoolId.ToUpper()}]-[{share.Source}] Block submission failed", $"[{share.PoolId.ToUpper()}]-[{share.Source}] Block {share.BlockHeight} submission failed for pool {poolConfig.Id} because block was not found after submission"));
-            // }
+            if(!accepted)
+            {
+                logger.Warn(() => $"Block {share.BlockHeight} submission failed for pool {poolConfig.Id} because block was not found after submission");
+                messageBus.SendMessage(new AdminNotification($"[{share.PoolId.ToUpper()}]-[{share.Source}] Block submission failed", $"[{share.PoolId.ToUpper()}]-[{share.Source}] Block {share.BlockHeight} submission failed for pool {poolConfig.Id} because block was not found after submission"));
+            }
 
-            return (block?.Transactions.FirstOrDefault());
+            return (accepted, block?.Transactions.FirstOrDefault());
         }
 
         protected virtual async Task<bool> AreDaemonsHealthyLegacyAsync()
