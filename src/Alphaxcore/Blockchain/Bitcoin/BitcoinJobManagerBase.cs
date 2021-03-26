@@ -289,7 +289,7 @@ namespace Alphaxcore.Blockchain.Bitcoin
                 hasSubmitBlockMethod
                     ? new DaemonCmd(BitcoinCommands.SubmitBlock, new[] { blockHex })
                     : new DaemonCmd(BitcoinCommands.GetBlockTemplate, new { mode = "submit", data = blockHex }),
-                new DaemonCmd(BitcoinCommands.GetBlock, new[] { share.BlockHash }));
+                    new DaemonCmd(BitcoinCommands.GetBlock, new[] { share.BlockHash }));
 
             // did submission succeed?
             var submitResult = results[0];

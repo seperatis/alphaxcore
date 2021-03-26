@@ -104,6 +104,7 @@
 
   <Target Name="BuildNativeLibsLinux" AfterTargets="AfterBuild" Condition="'$(IsLinux)' == 'true'">
     <Exec Command="(cd $(ProjectDir)../Native/libmultihash &amp;&amp; make clean &amp;&amp; make) &amp;&amp; mv $(ProjectDir)../Native/libmultihash/libmultihash.so $(OutDir)" />
+    <Exec Command="(cd $(ProjectDir)../Native/libnewhash &amp;&amp; make clean &amp;&amp; make) &amp;&amp; mv $(ProjectDir)../Native/libnewhash/libnewhash.so $(OutDir)" />
     <Exec Command="(cd $(ProjectDir)../Native/libcryptonote &amp;&amp; make clean &amp;&amp; make) &amp;&amp; mv $(ProjectDir)../Native/libcryptonote/libcryptonote.so $(OutDir)" />
     <Exec Command="(cd $(ProjectDir)../Native/libcryptonight &amp;&amp; make clean &amp;&amp; make) &amp;&amp; mv $(ProjectDir)../Native/libcryptonight/libcryptonight.so $(OutDir)" />
   </Target>
@@ -117,7 +118,7 @@
 
   <Target Name="NativeLibsPublishIncludeLinux" BeforeTargets="PrepareForPublish" Condition="'$(IsLinux)' == 'true'">
     <ItemGroup>
-      <Libs Include="$(OutDir)libmultihash.so;$(OutDir)libcryptonote.so;$(OutDir)libcryptonight.so" />
+      <Libs Include="$(OutDir)libmultihash.so;$(OutDir)libnewhash.so;$(OutDir)libcryptonote.so;$(OutDir)libcryptonight.so" />
       <ContentWithTargetPath Include="@(Libs->'%(FullPath)')" RelativePath="%(Libs.Identity)" TargetPath="%(Libs.Filename)%(Libs.Extension)" CopyToPublishDirectory="PreserveNewest" />
     </ItemGroup>
   </Target>

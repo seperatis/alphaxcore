@@ -1073,6 +1073,24 @@
         "explorerTxLink": "https://blocks.notebc.space/tx/{0}",
         "explorerAccountLink": "https://blocks.notebc.space/address/{0}"
     },
+    "opticalbitcoin": {
+        "name": "Optical BTC",
+        "symbol": "OBTC",
+        "family": "bitcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "heavyhash"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [ { "hash": "heavyhash" } ]
+        },
+        "explorerBlockLink": "https://explorer.powx.org/block/$hash$",
+        "explorerTxLink": "https://explorer.powx.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.powx.org/address/{0}"
+    },
     "paccoin": {
         "name": "Paccoin",
         "symbol": "PAC",
@@ -1258,6 +1276,27 @@
         "explorerBlockLink": "https://explorer.pyrk.org/blockheight/$height$",
         "explorerTxLink": "https://explorer.pyrk.org/tx/{0}",
         "explorerAccountLink": "https://explorer.pyrk.org/address/{0}"
+    },
+    "raptoreum": {
+        "name": "Raptoreum",
+        "symbol": "RTM",
+        "family": "bitcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "ghostrider"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [ { "hash": "ghostrider" } ]
+        },
+        "hasMasterNodes": true,
+        "hasFounderFee":true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.raptoreum.com/block-height/$height$",
+        "explorerTxLink": "https://explorer.raptoreum.com/tx/{0}",
+        "explorerAccountLink": "https://explorer.raptoreum.com/address/{0}"
     },
     "rosecoin": {
         "name": "Rosecoin",
