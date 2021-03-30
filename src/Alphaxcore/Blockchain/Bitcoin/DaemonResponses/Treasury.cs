@@ -30,13 +30,15 @@ namespace Alphaxcore.Blockchain.Bitcoin.DaemonResponses
 {
     public class Treasury
     {
-        public string Payee        { get; set; }
+        public string Height { get; set; }
+        public string Address { get; set; }
         public string ScriptPubkey { get; set; }
-        public long   Amount       { get; set; }
+        public long Amount { get; set; }
+        public string Hex { get; set; }
     }
 
-    public class TreasuryTemplateExtra
+    public class TreasuryBlockTemplateExtra
     {
-        public JToken Treasury     { get; set; }
+        public JToken Treasury { get; set; }
     }
 }

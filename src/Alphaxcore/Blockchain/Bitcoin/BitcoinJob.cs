@@ -266,13 +266,13 @@ namespace Alphaxcore.Blockchain.Bitcoin
 
             var tx = Transaction.Create(network);
             
-            // Now check if we need to pay founder fees
+            // Check if we need to pay founder fees
             if(coin.HasFounderFee)
-                rewardToPool = CreateFounderOutputs(tx,rewardToPool);
+                rewardToPool = CreateFounderOutputs(tx, rewardToPool);
             
-            // Treasury check for Globaltoken
-            if(coin.HasTreasury)
-                rewardToPool = CreateTreasuryOutputs(tx,rewardToPool);
+            // Check if we need to pay treasury reward
+            if(coin.HasTreasuryReward)
+                rewardToPool = CreateTreasuryOutputs(tx, rewardToPool);
 
             tx.Outputs.Add(rewardToPool, poolAddressDestination);
             
@@ -481,9 +481,15 @@ namespace Alphaxcore.Blockchain.Bitcoin
 
             // outputs
             rewardToPool = CreateMasternodeOutputs(tx, blockReward);
-            //Now check if we need to pay founder fees Re PGN
+            
+            // Check if we need to pay founder fees
             if(coin.HasFounderFee)
-                rewardToPool = CreateFounderOutputs(tx,rewardToPool);
+                rewardToPool = CreateFounderOutputs(tx, rewardToPool);
+            
+            // Check if we need to pay treasury reward
+            if(coin.HasTreasuryReward)
+                rewardToPool = CreateTreasuryOutputs(tx, rewardToPool);
+            
             // Finally distribute remaining funds to pool
             tx.Outputs.Insert(0, new TxOut(rewardToPool, poolAddressDestination));
 
@@ -590,7 +596,7 @@ namespace Alphaxcore.Blockchain.Bitcoin
 
         #endregion // DevaultCoinbasePayload
 
-        #region PigeoncoinDevFee
+        #region Founder
 
         protected FounderBlockTemplateExtra FounderParameters;
 
@@ -608,14 +614,14 @@ namespace Alphaxcore.Blockchain.Bitcoin
                         var payeeReward = Founder.Amount;
                         reward -= payeeReward;
                         rewardToPool -= payeeReward;
-                        tx.Outputs.Add(payeeReward,payeeAddress);
+                        tx.Outputs.Add(payeeReward, payeeAddress);
                     }
                 }
             }
             return reward;
         }
 
-        #endregion // PigeoncoinDevFee
+        #endregion // Founder
 
         #region CoinbaseDevReward
 
@@ -644,21 +650,24 @@ namespace Alphaxcore.Blockchain.Bitcoin
         
         #region Treasury
 
-        protected TreasuryTemplateExtra TreasuryParams;
+        protected TreasuryBlockTemplateExtra TreasuryParameters;
 
         protected virtual Money CreateTreasuryOutputs(Transaction tx, Money reward)
         {
-            if(TreasuryParams.Treasury != null)
-            {
-                Treasury[] CBRewards;
-                CBRewards = new[] { TreasuryParams.Treasury.ToObject<Treasury>() };
 
-                foreach(var CBReward in CBRewards)
+            if(TreasuryParameters.Treasury != null)
+            {
+                Treasury[] treasurys = new[] { TreasuryParameters.Treasury.ToObject<Treasury>() };
+                foreach(var Treasury in treasurys)
                 {
-                    if(!string.IsNullOrEmpty(CBReward.Payee))
+                    if(!string.IsNullOrEmpty(Treasury.Address))
                     {
-                        var payeeAddress = BitcoinUtils.AddressToDestination(CBReward.Payee, network);
-                        var payeeReward = CBReward.Amount;
+                        var payeeAddress = coin.IsTreasuryAddressMultisig ? BitcoinUtils.MultiSigAddressToDestination(Treasury.Address, network) : BitcoinUtils.AddressToDestination(Treasury.Address, network);
+                        var payeeReward = Treasury.Amount;
+                        
+                        reward -= payeeReward;
+                        rewardToPool -= payeeReward;
+                        
                         tx.Outputs.Add(payeeReward, payeeAddress);
                     }
                 }
@@ -729,8 +738,8 @@ namespace Alphaxcore.Blockchain.Bitcoin
             if(coin.HasCoinbaseDevReward)
                 CoinbaseDevRewardParams = BlockTemplate.Extra.SafeExtensionDataAs<CoinbaseDevRewardTemplateExtra>();
             
-            if(coin.HasTreasury)
-                TreasuryParams = BlockTemplate.Extra.SafeExtensionDataAs<TreasuryTemplateExtra>();
+            if(coin.HasTreasuryReward)
+                TreasuryParameters = BlockTemplate.Extra.SafeExtensionDataAs<TreasuryBlockTemplateExtra>();
 
             if(coin.HasPayee)
                 payeeParameters = BlockTemplate.Extra.SafeExtensionDataAs<PayeeBlockTemplateExtra>();
