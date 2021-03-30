@@ -171,12 +171,15 @@ namespace Alphaxcore.Configuration
 
         [JsonProperty("isFounderPayeeMultisig")]
         public bool IsFounderPayeeMultisig { get; set; }
+        
+        [JsonProperty("hasTreasuryReward")]
+        public bool HasTreasuryReward { get; set; }
+        
+        [JsonProperty("isTreasuryAddressMultisig")]
+        public bool IsTreasuryAddressMultisig { get; set; }
 
         [JsonProperty("hasCoinbaseDevReward")]
         public bool HasCoinbaseDevReward { get; set; }
-
-        [JsonProperty("hasTreasury")]
-        public bool HasTreasury { get; set; }
         
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         [DefaultValue(1.0d)]
