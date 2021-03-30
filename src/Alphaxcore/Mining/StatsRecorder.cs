@@ -187,6 +187,10 @@ namespace Alphaxcore.Mining
                             poolHashrate *= 11.2;
                         }
                         
+                        if(poolId == "sugar"){
+                            poolHashrate *= 58.5;
+                        }
+                        
                         // update
                         pool.PoolStats.ConnectedMiners = byMiner.Length;
                         pool.PoolStats.ConnectedWorkers = workerCount;
@@ -264,10 +268,16 @@ namespace Alphaxcore.Mining
                             if(windowActual >= MinHashrateCalculationWindow)
                             {
                                 var hashrate = pool.HashrateFromShares(item.Sum, windowActual) * HashrateBoostFactor;
+                                
                                 if(poolId == "idx" || poolId == "vgc" || poolId == "shrx" || poolId == "ecc" || poolId == "gold" || poolId == "eli" || poolId == "acm" || 
                                    poolId == "alps" || poolId == "grs"){
                                     hashrate *= 11.2;
                                 }
+                                
+                                if(poolId == "sugar"){
+                                    hashrate *= 58.5;
+                                }
+                                
                                 minerTotalHashrate += hashrate;
                                 
                                 // update
