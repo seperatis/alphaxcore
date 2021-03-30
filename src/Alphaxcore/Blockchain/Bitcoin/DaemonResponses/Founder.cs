@@ -38,5 +38,8 @@ namespace Alphaxcore.Blockchain.Bitcoin.DaemonResponses
     public class FounderBlockTemplateExtra
     {
         public JToken Founder { get; set; }
+        
+        [JsonProperty("founder_payments_started")]
+        public bool FounderPaymentsStarted { get; set; }
     }
 }
