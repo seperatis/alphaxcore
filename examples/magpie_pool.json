@@ -58,9 +58,9 @@
       "enabled": true,
       "coin": "magpiecoin",
       "hasLegacyDaemon": true,
-      "address": "MeohXW3jVcK3Z1zJRF3mkM8zUiSbQUuuBr",
+      "address": "your wallet address here",
       "rewardRecipients": [{
-          "address": "MeohXW3jVcK3Z1zJRF3mkM8zUiSbQUuuBr",
+          "address": "your wallet address here",
           "percentage": 1
       }],
       "blockRefreshInterval": 500,
