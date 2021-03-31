@@ -187,6 +187,10 @@ namespace Alphaxcore.Mining
                             poolHashrate *= 11.2;
                         }
                         
+                        if(poolId == "rng"){
+                            poolHashrate *= 27.5;
+                        }
+                        
                         if(poolId == "sugar"){
                             poolHashrate *= 58.5;
                         }
@@ -272,6 +276,10 @@ namespace Alphaxcore.Mining
                                 if(poolId == "idx" || poolId == "vgc" || poolId == "shrx" || poolId == "ecc" || poolId == "gold" || poolId == "eli" || poolId == "acm" || 
                                    poolId == "alps" || poolId == "grs"){
                                     hashrate *= 11.2;
+                                }
+                                
+                                if(poolId == "rng"){
+                                    hashrate *= 27.5;
                                 }
                                 
                                 if(poolId == "sugar"){
