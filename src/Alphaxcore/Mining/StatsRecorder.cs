@@ -188,7 +188,7 @@ namespace Alphaxcore.Mining
                         }
                         
                         if(poolId == "rng"){
-                            poolHashrate *= 27.5;
+                            poolHashrate *= 2850;
                         }
                         
                         if(poolId == "sugar"){
@@ -279,7 +279,7 @@ namespace Alphaxcore.Mining
                                 }
                                 
                                 if(poolId == "rng"){
-                                    hashrate *= 27.5;
+                                    hashrate *= 2850;
                                 }
                                 
                                 if(poolId == "sugar"){
