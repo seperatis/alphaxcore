@@ -21,6 +21,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "gr.h"
 #include "heavyhash/heavyhash.h"
+#include "minotaur.h"
 
 #ifdef _WIN32
 #define MODULE_API __declspec(dllexport)
@@ -36,4 +37,9 @@ extern "C" MODULE_API void ghostrider_export(const char* input, char* output, ui
 extern "C" MODULE_API void heavyhash_export(const char* input, char* output, uint32_t input_len)
 {
 	heavyhash_hash(input, output, input_len);
+}
+
+extern "C" MODULE_API void minotaur_export(const char* input, char* output, uint32_t input_len)
+{
+	minotaur_hash(input, output, input_len);
 }
