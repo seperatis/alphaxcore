@@ -1300,6 +1300,25 @@
         "explorerTxLink": "https://explorer.raptoreum.com/tx/{0}",
         "explorerAccountLink": "https://explorer.raptoreum.com/address/{0}"
     },
+    "ring": {
+        "name": "Ring",
+        "symbol": "RNG",
+        "family": "bitcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "minotaur"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [ { "hash": "sha256d" } ]
+        },
+        "shareMultiplier": 4096,
+        "explorerBlockLink": "https://rng.explorer.alphax.pro/block/$hash$",
+        "explorerTxLink": "https://rng.explorer.alphax.pro/tx/{0}",
+        "explorerAccountLink": "https://rng.explorer.alphax.pro/address/{0}"
+    },
     "rosecoin": {
         "name": "Rosecoin",
         "symbol": "ROC",

@@ -5,7 +5,7 @@ LDFLAGS = -shared
 LDLIBS = -lsodium
 TARGET  = libnewhash.so
 
-OBJECTS = gost.o gr.o Lyra2.o Sponge.o exports.o \
+OBJECTS = gost.o gr.o Lyra2.o minotaur.o Sponge.o exports.o \
           heavyhash/heavyhash.o heavyhash/keccak_tiny.o sha3/SWIFFTX.o sha3/aes_helper.o sha3/extra.o sha3/hamsi_helper.o \
           sha3/sph_blake.o sha3/sph_blake2s.o sha3/sph_bmw.o sha3/sph_cubehash.o sha3/sph_echo.o sha3/sph_fugue.o sha3/sph_groestl.o \
           sha3/sph_hamsi.o sha3/sph_haval.o sha3/sph_hefty1.o sha3/sph_jh.o sha3/sph_keccak.o sha3/sph_luffa.o sha3/sph_panama.o \

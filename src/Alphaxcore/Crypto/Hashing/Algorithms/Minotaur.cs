@@ -3,7 +3,7 @@ Copyright 2017 - 2020 Coin Foundry (coinfoundry.org)
 Copyright 2020 - 2021 AlphaX Projects (alphax.pro)
 Authors: Oliver Weichhold (oliver@weichhold.com)
          Olaf Wasilewski (olaf.wasilewski@gmx.de)
-         
+
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction,
 including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -21,19 +21,24 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 using System;
-using System.Runtime.InteropServices;
+using Alphaxcore.Contracts;
+using Alphaxcore.Native;
 
-namespace Alphaxcore.Native
+namespace Alphaxcore.Crypto.Hashing.Algorithms
 {
-    public static unsafe class LibNewhash
+    public unsafe class Minotaur : IHashAlgorithm
     {
-        [DllImport("libnewhash", EntryPoint = "ghostrider_export", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int ghostrider(byte* input, void* output, uint inputLength);
-        
-        [DllImport("libnewhash", EntryPoint = "heavyhash_export", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int heavyhash(byte* input, void* output, uint inputLength);
-        
-        [DllImport("libnewhash", EntryPoint = "minotaur_export", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int minotaur(byte* input, void* output, uint inputLength);
+        public void Digest(ReadOnlySpan<byte> data, Span<byte> result, params object[] extra)
+        {
+            Contract.Requires<ArgumentException>(result.Length >= 32, $"{nameof(result)} must be greater or equal 32 bytes");
+
+            fixed (byte* input = data)
+            {
+                fixed (byte* output = result)
+                {
+                    LibNewhash.minotaur(input, output, (uint) data.Length);
+                }
+            }
+        }
     }
 }
