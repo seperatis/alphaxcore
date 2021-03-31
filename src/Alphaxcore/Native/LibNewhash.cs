@@ -31,6 +31,9 @@ namespace Alphaxcore.Native
         public static extern int ghostrider(byte* input, void* output, uint inputLength);
         
         [DllImport("libnewhash", EntryPoint = "heavyhash_export", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int heavyhash(byte* input, void* output, uint inputLength);        
+        public static extern int heavyhash(byte* input, void* output, uint inputLength);
+        
+        [DllImport("libnewhash", EntryPoint = "minotaur_export", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int minotaur(byte* input, void* output, uint inputLength);
     }
 }
