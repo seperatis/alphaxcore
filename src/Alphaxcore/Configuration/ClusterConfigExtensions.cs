@@ -223,7 +223,7 @@ namespace Alphaxcore.Configuration
 
         public override string GetAlgorithmName()
         {
-            return "Ethhash";
+            return "Ethash";
         }
 
         #endregion
