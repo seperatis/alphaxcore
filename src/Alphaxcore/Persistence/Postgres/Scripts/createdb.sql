@@ -88,7 +88,8 @@ CREATE TABLE poolstats
 	lastnetworkblocktime TIMESTAMP NULL,
     blockheight BIGINT NOT NULL DEFAULT 0,
     connectedpeers INT NOT NULL DEFAULT 0,
-	created TIMESTAMP NOT NULL
+	created TIMESTAMP NOT NULL,
+    lastpoolblocktime TIMESTAMP NULL
 );
 
 CREATE INDEX IDX_POOLSTATS_POOL_CREATED on poolstats(poolid, created);
