@@ -35,6 +35,7 @@ namespace Alphaxcore.Blockchain
         public ulong BlockHeight { get; set; }
         public int ConnectedPeers { get; set; }
         public string RewardType { get; set; }
+        public DateTime? CurrentTime { get; set; }
     }
 
     public interface IExtraNonceProvider
