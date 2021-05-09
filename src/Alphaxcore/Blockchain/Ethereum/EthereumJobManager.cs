@@ -624,7 +624,7 @@ namespace Alphaxcore.Blockchain.Ethereum
             await UpdateNetworkStatsAsync();
 
             // Periodically update network stats
-            Observable.Interval(TimeSpan.FromMinutes(10))
+            Observable.Interval(TimeSpan.FromSeconds(30))
                 .Select(via => Observable.FromAsync(async () =>
                 {
                     try
