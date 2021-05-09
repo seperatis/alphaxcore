@@ -38,5 +38,6 @@ namespace Alphaxcore.Persistence.Model
         public int ConnectedPeers { get; set; }
         public int SharesPerSecond { get; set; }
         public DateTime Created { get; set; }
+        public DateTime? LastPoolBlockTime { get; set; }
     }
 }
