@@ -307,13 +307,11 @@ namespace Alphaxcore.Blockchain.Ethereum
 
             try
             {
-                var commands = new[]
-                {
+                var results = await daemon.ExecuteBatchAnyAsync(logger, 
                     new DaemonCmd(EC.GetPeerCount),
-                };
-
-                var results = await daemon.ExecuteBatchAnyAsync(logger, commands);
-
+                    new DaemonCmd(EC.GetBlockByNumber, new[] { (object) "latest", true })
+                );
+                
                 if(results.Any(x => x.Error != null))
                 {
                     var errors = results.Where(x => x.Error != null)
@@ -323,11 +321,24 @@ namespace Alphaxcore.Blockchain.Ethereum
                         logger.Warn(() => $"Error(s) refreshing network stats: {string.Join(", ", errors.Select(y => y.Error.Message))})");
                 }
 
-                // extract results
                 var peerCount = results[0].Response.ToObject<string>().IntegralFromHex<int>();
+                var latestBlockInfo = results[1].Response.ToObject<Block>();
+                var latestBlockHeight = latestBlockInfo.Height.Value;
+                var latestBlockTimestamp = latestBlockInfo.Timestamp;
+                var latestBlockDifficulty = latestBlockInfo.Difficulty.IntegralFromHex<ulong>();
 
-                BlockchainStats.NetworkHashrate = 0; // TODO
+                ulong sampleBlockCount = 50;
+                var sampleBlockNumber = latestBlockHeight - sampleBlockCount;
+                var sampleBlockResults = await daemon.ExecuteCmdAllAsync<DaemonResponses.Block>(logger, EC.GetBlockByNumber, new[] { (object) sampleBlockNumber.ToStringHexWithPrefix(), true });
+                var sampleBlockHeight = sampleBlockResults.First(x => x.Error == null && x.Response?.Height != null).Response.Height.Value;
+                var sampleBlockTimestamp = sampleBlockResults.First(x => x.Error == null && x.Response?.Height != null).Response.Timestamp;
+                                 
+                ulong BlockTimeFrame = latestBlockTimestamp - sampleBlockTimestamp;
+                ulong blockAvgTime = BlockTimeFrame / sampleBlockCount;
+
                 BlockchainStats.ConnectedPeers = peerCount;
+                BlockchainStats.NetworkHashrate = blockAvgTime > 0 ? (double) latestBlockDifficulty / blockAvgTime : 0;
+                BlockchainStats.CurrentTime = clock.Now;
             }
 
             catch(Exception e)
@@ -656,7 +667,6 @@ namespace Alphaxcore.Blockchain.Ethereum
 
         private void ConfigureRewards()
         {
-            // Donation to MiningCore development
             if(networkType == EthereumNetworkType.Main &&
                 chainType == ParityChainType.Mainnet &&
                 DevDonation.Addresses.TryGetValue(poolConfig.Template.As<CoinTemplate>().Symbol, out var address))
