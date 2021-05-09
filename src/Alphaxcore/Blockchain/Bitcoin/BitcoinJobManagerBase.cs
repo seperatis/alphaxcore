@@ -270,6 +270,7 @@ namespace Alphaxcore.Blockchain.Bitcoin
 
                 BlockchainStats.NetworkHashrate = miningInfoResponse.NetworkHashps;
                 BlockchainStats.ConnectedPeers = networkInfoResponse.Connections;
+                BlockchainStats.CurrentTime = clock.Now;
 
                 // Fall back to alternative RPC if coin does not report Network HPS (Digibyte)
                 if(BlockchainStats.NetworkHashrate == 0 && results[2].Error == null)
@@ -386,6 +387,7 @@ namespace Alphaxcore.Blockchain.Bitcoin
 
                 BlockchainStats.ConnectedPeers = (int) (long) connectionCountResponse;
                 BlockchainStats.NetworkHashrate = miningInfoResponse.NetmHashps *= 1000000;
+                BlockchainStats.CurrentTime = clock.Now;
             }
 
             catch(Exception e)
@@ -541,7 +543,7 @@ namespace Alphaxcore.Blockchain.Bitcoin
                 await UpdateNetworkStatsLegacyAsync();
 
             // Periodically update network stats
-            Observable.Interval(TimeSpan.FromMinutes(10))
+            Observable.Interval(TimeSpan.FromSeconds(30))
                 .Select(via => Observable.FromAsync(async () =>
                 {
                     try
@@ -589,7 +591,6 @@ namespace Alphaxcore.Blockchain.Bitcoin
 
         protected void ConfigureRewards()
         {
-            // Donation to MiningCore development
             if(network.NetworkType == NetworkType.Mainnet &&
                 DevDonation.Addresses.TryGetValue(poolConfig.Template.Symbol, out var address))
             {
