@@ -504,11 +504,12 @@ namespace Alphaxcore.Blockchain.Cryptonote
             // update stats
             BlockchainStats.RewardType = "POW";
             BlockchainStats.NetworkType = networkType.ToString();
+            BlockchainStats.CurrentTime = clock.Now;
 
             await UpdateNetworkStatsAsync();
 
             // Periodically update network stats
-            Observable.Interval(TimeSpan.FromMinutes(1))
+            Observable.Interval(TimeSpan.FromSeconds(30))
                 .Select(via => Observable.FromAsync(async () =>
                {
                    try
@@ -529,7 +530,6 @@ namespace Alphaxcore.Blockchain.Cryptonote
 
         private void ConfigureRewards()
         {
-            // Donation to MiningCore development
             if(networkType == CryptonoteNetworkType.Main &&
                 DevDonation.Addresses.TryGetValue(poolConfig.Template.Symbol, out var address))
             {
