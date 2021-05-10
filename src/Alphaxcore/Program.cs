@@ -730,9 +730,9 @@ namespace Alphaxcore
                     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
                     services.AddMvc()
-                        .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                        .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                         .AddControllersAsServices()
-                        .AddNewtonsoftJson(options =>
+                        .AddJsonOptions(options =>
                         {
                             options.SerializerSettings.Formatting = Formatting.Indented;
                         });
