@@ -736,7 +736,6 @@ namespace Alphaxcore
                         {
                             options.SerializerSettings.Formatting = Formatting.Indented;
                         });
-                    services.AddMvc(option => option.EnableEndpointRouting = false);
 
                     // Gzip Compression
                     services.AddResponseCompression();
@@ -758,7 +757,7 @@ namespace Alphaxcore
                     UseIpWhiteList(app, true, new[] { "/metrics" }, clusterConfig.Api?.MetricsIpWhitelist);
 
                     app.UseResponseCompression();
-                    app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithExposedHeaders("x-total-count"));
+                    app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
                     app.UseWebSockets();
                     app.MapWebSocketManager("/notifications", app.ApplicationServices.GetService<WebSocketNotificationsRelay>());
                     app.UseMetricServer();
