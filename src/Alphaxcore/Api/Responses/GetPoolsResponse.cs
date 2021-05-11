@@ -55,7 +55,6 @@ namespace Alphaxcore.Api.Responses
     {
         // Configuration Properties directly mapping to PoolConfig (omitting security relevant fields)
         public string Id { get; set; }
-
         public ApiCoinConfig Coin { get; set; }
         public Dictionary<int, PoolEndpoint> Ports { get; set; }
         public ApiPoolPaymentProcessingConfig PaymentProcessing { get; set; }
@@ -69,11 +68,9 @@ namespace Alphaxcore.Api.Responses
 
         // Stats
         public PoolStats PoolStats { get; set; }
-
         public BlockchainStats NetworkStats { get; set; }
         public MinerPerformanceStats[] TopMiners { get; set; }
         public decimal TotalPaid { get; set; }
-        public long RoundShares { get; set; }
     }
 
     public class GetPoolsResponse
