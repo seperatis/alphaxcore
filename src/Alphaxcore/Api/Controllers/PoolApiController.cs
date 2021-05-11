@@ -89,10 +89,10 @@ namespace Alphaxcore.Api.Controllers
 
                     // enrich
                     result.TotalPaid = await cf.Run(con => statsRepo.GetTotalPoolPaymentsAsync(con, config.Id));
+                    
                     var from = clock.Now.AddDays(-1);
 
-                    result.TopMiners = (await cf.Run(con => statsRepo.PagePoolMinersByHashrateAsync(
-                            con, config.Id, from, 0, 15)))
+                    result.TopMiners = (await cf.Run(con => statsRepo.PagePoolMinersByHashrateAsync(con, config.Id, from, 0, 15)))
                         .Select(mapper.Map<MinerPerformanceStats>)
                         .ToArray();
 
@@ -124,8 +124,7 @@ namespace Alphaxcore.Api.Controllers
 
             var from = clock.Now.AddDays(-1);
 
-            response.Pool.TopMiners = (await cf.Run(con => statsRepo.PagePoolMinersByHashrateAsync(
-                    con, pool.Id, from, 0, 15)))
+            response.Pool.TopMiners = (await cf.Run(con => statsRepo.PagePoolMinersByHashrateAsync(con, pool.Id, from, 0, 15)))
                 .Select(mapper.Map<MinerPerformanceStats>)
                 .ToArray();
 
@@ -157,8 +156,7 @@ namespace Alphaxcore.Api.Controllers
                     throw new ApiException("invalid interval");
             }
 
-            var stats = await cf.Run(con => statsRepo.GetPoolPerformanceBetweenAsync(
-                con, pool.Id, interval, start, end));
+            var stats = await cf.Run(con => statsRepo.GetPoolPerformanceBetweenAsync(con, pool.Id, interval, start, end));
 
             var response = new GetPoolStatsResponse
             {
@@ -169,8 +167,7 @@ namespace Alphaxcore.Api.Controllers
         }
 
         [HttpGet("{poolId}/miners")]
-        public async Task<MinerPerformanceStats[]> PagePoolMinersAsync(
-            string poolId, [FromQuery] int page, [FromQuery] int pageSize = 15)
+        public async Task<MinerPerformanceStats[]> PagePoolMinersAsync(string poolId, [FromQuery] int page, [FromQuery] int pageSize = 15)
         {
             var pool = GetPool(poolId);
 
@@ -178,8 +175,7 @@ namespace Alphaxcore.Api.Controllers
             var end = clock.Now;
             var start = end.AddDays(-1);
 
-            var miners = (await cf.Run(con => statsRepo.PagePoolMinersByHashrateAsync(
-                    con, pool.Id, start, page, pageSize)))
+            var miners = (await cf.Run(con => statsRepo.PagePoolMinersByHashrateAsync(con, pool.Id, start, page, pageSize)))
                 .Select(mapper.Map<MinerPerformanceStats>)
                 .ToArray();
 
@@ -224,8 +220,7 @@ namespace Alphaxcore.Api.Controllers
         }
 
         [HttpGet("{poolId}/payments")]
-        public async Task<Responses.Payment[]> PagePoolPaymentsAsync(
-            string poolId, [FromQuery] int page, [FromQuery] int pageSize = 15)
+        public async Task<Responses.Payment[]> PagePoolPaymentsAsync(string poolId, [FromQuery] int page, [FromQuery] int pageSize = 15)
         {
             var pool = GetPool(poolId);
 
