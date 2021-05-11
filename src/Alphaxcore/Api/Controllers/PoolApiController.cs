@@ -121,7 +121,6 @@ namespace Alphaxcore.Api.Controllers
 
             // enrich
             response.Pool.TotalPaid = await cf.Run(con => statsRepo.GetTotalPoolPaymentsAsync(con, pool.Id));
-            response.Pool.RoundShares = await cf.Run(con => shareRepo.CountSharesBeforeCreatedAsync(con, tx, pool.Id, before));
 
             var from = clock.Now.AddDays(-1);
 
