@@ -63,6 +63,7 @@
           "address": "0x0942e9144606ad43f2e61a7ee332fe9914424712",
           "percentage": 1
         }],
+        "blockTimeInterval": 13,
         "blockRefreshInterval": 500,
         "clientConnectionTimeout": 600,
         "banning": {
