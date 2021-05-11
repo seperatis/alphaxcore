@@ -695,7 +695,8 @@ namespace Alphaxcore.Configuration
         public PoolShareBasedBanningConfig Banning { get; set; }
         public RewardRecipient[] RewardRecipients { get; set; }
         public string Address { get; set; }
-        public string PubKey { get; set; }  // POS coins only
+        public string PubKey { get; set; }
+        public int BlockTimeInterval { get; set; }
         public int ClientConnectionTimeout { get; set; }
         public int JobRebroadcastTimeout { get; set; }
         public int BlockRefreshInterval { get; set; }
