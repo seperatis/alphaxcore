@@ -73,6 +73,7 @@ namespace Alphaxcore.Api.Responses
         public BlockchainStats NetworkStats { get; set; }
         public MinerPerformanceStats[] TopMiners { get; set; }
         public decimal TotalPaid { get; set; }
+        public long RoundShares { get; set; }
     }
 
     public class GetPoolsResponse
