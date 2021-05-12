@@ -548,8 +548,13 @@ namespace Alphaxcore.Configuration
     {
         public bool Enabled { get; set; }
         public int Interval { get; set; }
-
         public string ShareRecoveryFile { get; set; }
+        
+        /// <summary>
+        /// Arbitrary extension data
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> Extra { get; set; }
     }
 
     public partial class PersistenceConfig
