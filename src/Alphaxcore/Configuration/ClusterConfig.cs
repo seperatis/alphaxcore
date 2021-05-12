@@ -461,6 +461,11 @@ namespace Alphaxcore.Configuration
         /// If TlsPemFile does not include the private key, TlsKeyFile is also required
         /// </summary>
         public bool Tls { get; set; }
+        
+        /// <summary>
+        /// PKCS certificate file
+        /// </summary>
+        public string TlsPfxFile { get; set; }
     }
 
     public partial class VarDiffConfig
