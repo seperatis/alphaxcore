@@ -51,6 +51,12 @@ namespace Alphaxcore.Api.Responses
         public IDictionary<string, object> Extra { get; set; }
     }
 
+    public class ApiClusterPaymentProcessingConfig
+    {
+        public bool Enabled { get; set; }
+        public int Interval { get; set; }
+    }
+    
     public partial class PoolInfo
     {
         // Configuration Properties directly mapping to PoolConfig (omitting security relevant fields)
@@ -58,7 +64,7 @@ namespace Alphaxcore.Api.Responses
         public ApiCoinConfig Coin { get; set; }
         public Dictionary<int, PoolEndpoint> Ports { get; set; }
         public ApiPoolPaymentProcessingConfig PaymentProcessing { get; set; }
-        public int PaymentTimeInterval { get; set; }
+        public ApiClusterPaymentProcessingConfig PaymentInterval { get; set; }
         public int BlockTimeInterval { get; set; }
         public int ClientConnectionTimeout { get; set; }
         public int JobRebroadcastTimeout { get; set; }
