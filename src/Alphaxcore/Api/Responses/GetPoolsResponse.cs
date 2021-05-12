@@ -43,18 +43,10 @@ namespace Alphaxcore.Api.Responses
     public class ApiPoolPaymentProcessingConfig
     {
         public bool Enabled { get; set; }
+        public int PaymentInterval Enabled { get; set; }
         public decimal MinimumPayment { get; set; }
         public string PayoutScheme { get; set; }
 
-        [JsonExtensionData]
-        public IDictionary<string, object> Extra { get; set; }
-    }
-
-    public class ApiClusterPaymentProcessingConfig
-    {
-        public bool Enabled { get; set; }
-        public int Interval { get; set; }
-        
         [JsonExtensionData]
         public IDictionary<string, object> Extra { get; set; }
     }
@@ -66,7 +58,6 @@ namespace Alphaxcore.Api.Responses
         public ApiCoinConfig Coin { get; set; }
         public Dictionary<int, PoolEndpoint> Ports { get; set; }
         public ApiPoolPaymentProcessingConfig PaymentProcessing { get; set; }
-        public ApiClusterPaymentProcessingConfig PaymentInterval { get; set; }
         public int BlockTimeInterval { get; set; }
         public int ClientConnectionTimeout { get; set; }
         public int JobRebroadcastTimeout { get; set; }
