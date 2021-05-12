@@ -533,7 +533,7 @@ namespace Alphaxcore.Configuration
     public partial class PoolPaymentProcessingConfig
     {
         public bool Enabled { get; set; }
-        public decimal MinimumPayment { get; set; } // in pool-base-currency (ie. Bitcoin, not Satoshis)
+        public decimal MinimumPayment { get; set; }
         public PayoutScheme PayoutScheme { get; set; }
         public JToken PayoutSchemeConfig { get; set; }
 
@@ -692,11 +692,11 @@ namespace Alphaxcore.Configuration
         public Dictionary<int, PoolEndpoint> Ports { get; set; }
         public DaemonEndpointConfig[] Daemons { get; set; }
         public PoolPaymentProcessingConfig PaymentProcessing { get; set; }
+        public ClusterPaymentProcessingConfig PaymentInterval { get; set; }
         public PoolShareBasedBanningConfig Banning { get; set; }
         public RewardRecipient[] RewardRecipients { get; set; }
         public string Address { get; set; }
         public string PubKey { get; set; }
-        public int paymentTimeInterval { get; set; }
         public int BlockTimeInterval { get; set; }
         public int ClientConnectionTimeout { get; set; }
         public int JobRebroadcastTimeout { get; set; }
