@@ -45,7 +45,6 @@ namespace Alphaxcore.Api.Responses
         public bool Enabled { get; set; }
         public decimal MinimumPayment { get; set; }
         public string PayoutScheme { get; set; }
-        public JToken PayoutSchemeConfig { get; set; }
 
         [JsonExtensionData]
         public IDictionary<string, object> Extra { get; set; }
