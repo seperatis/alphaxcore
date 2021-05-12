@@ -461,11 +461,6 @@ namespace Alphaxcore.Configuration
         /// If TlsPemFile does not include the private key, TlsKeyFile is also required
         /// </summary>
         public bool Tls { get; set; }
-
-        /// <summary>
-        /// PKCS certificate file
-        /// </summary>
-        public string TlsPfxFile { get; set; }
     }
 
     public partial class VarDiffConfig
@@ -533,6 +528,7 @@ namespace Alphaxcore.Configuration
     public partial class PoolPaymentProcessingConfig
     {
         public bool Enabled { get; set; }
+        public int PaymentInterval { get; set; }
         public decimal MinimumPayment { get; set; }
         public PayoutScheme PayoutScheme { get; set; }
         public JToken PayoutSchemeConfig { get; set; }
@@ -549,12 +545,6 @@ namespace Alphaxcore.Configuration
         public bool Enabled { get; set; }
         public int Interval { get; set; }
         public string ShareRecoveryFile { get; set; }
-        
-        /// <summary>
-        /// Arbitrary extension data
-        /// </summary>
-        [JsonExtensionData]
-        public IDictionary<string, object> Extra { get; set; }
     }
 
     public partial class PersistenceConfig
@@ -697,7 +687,6 @@ namespace Alphaxcore.Configuration
         public Dictionary<int, PoolEndpoint> Ports { get; set; }
         public DaemonEndpointConfig[] Daemons { get; set; }
         public PoolPaymentProcessingConfig PaymentProcessing { get; set; }
-        public ClusterPaymentProcessingConfig PaymentInterval { get; set; }
         public PoolShareBasedBanningConfig Banning { get; set; }
         public RewardRecipient[] RewardRecipients { get; set; }
         public string Address { get; set; }
