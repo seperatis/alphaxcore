@@ -43,7 +43,7 @@ namespace Alphaxcore.Api.Responses
     public class ApiPoolPaymentProcessingConfig
     {
         public bool Enabled { get; set; }
-        public int PaymentInterval Enabled { get; set; }
+        public int PaymentInterval { get; set; }
         public decimal MinimumPayment { get; set; }
         public string PayoutScheme { get; set; }
 
