@@ -43,7 +43,7 @@ namespace Alphaxcore.Api.Responses
     public class ApiPoolPaymentProcessingConfig
     {
         public bool Enabled { get; set; }
-        public decimal MinimumPayment { get; set; } // in pool-base-currency (ie. Bitcoin, not Satoshis)
+        public decimal MinimumPayment { get; set; }
         public string PayoutScheme { get; set; }
         public JToken PayoutSchemeConfig { get; set; }
 
@@ -55,6 +55,9 @@ namespace Alphaxcore.Api.Responses
     {
         public bool Enabled { get; set; }
         public int Interval { get; set; }
+        
+        [JsonExtensionData]
+        public IDictionary<string, object> Extra { get; set; }
     }
     
     public partial class PoolInfo
