@@ -92,6 +92,7 @@
         }],
         "paymentProcessing": {
             "enabled": true,
+            "paymentInterval": 600, // same as payment processing interval
             "minimumPayment": 0.01,
             "minimumPaymentToPaymentId": 5.0,
             "payoutScheme": "PPLNS",
