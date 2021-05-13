@@ -323,20 +323,20 @@ namespace Alphaxcore.Persistence.Postgres.Repositories
             const string query = "WITH tmp AS " +
                 "( " +
                 "	SELECT  " +
-                 "		ms.miner,  " +
-                "		ms.id,  " +
+                "		ms.miner,  " +
                 "		ms.hashrate,  " +
                 "		ms.sharespersecond,  " +
                 "		ROW_NUMBER() OVER(PARTITION BY ms.miner ORDER BY ms.hashrate DESC) AS rk  " +
-                "	FROM (SELECT  miner, id , SUM(hashrate) AS hashrate, SUM(sharespersecond) AS sharespersecond " +
+                "	    FROM (SELECT miner, SUM(hashrate) AS hashrate, SUM(sharespersecond) AS sharespersecond " +
                 "       FROM minerstats " +
-                "       WHERE poolid = @poolid AND created >= @from GROUP BY id, created) ms " +
+                "       WHERE poolid = @poolid AND created >= @from GROUP BY miner, created) ms " +
                 ") " +
-                "SELECT t.id, t.miner, t.hashrate, t.sharespersecond " +
+                "SELECT t.miner, t.hashrate, t.sharespersecond " +
                 "FROM tmp t " +
                 "WHERE t.rk = 1 " +
                 "ORDER by t.hashrate DESC " +
                 "OFFSET @offset FETCH NEXT (@pageSize) ROWS ONLY";
+
             return (await con.QueryAsync<Entities.MinerWorkerPerformanceStats>(query, new { poolId, from, offset = page * pageSize, pageSize }))
                 .Select(mapper.Map<MinerWorkerPerformanceStats>)
                 .ToArray();
