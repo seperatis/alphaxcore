@@ -730,7 +730,7 @@ namespace Alphaxcore
                     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
                     services.AddMvc()
-                        .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                        .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                         .AddControllersAsServices()
                         .AddJsonOptions(options =>
                         {
