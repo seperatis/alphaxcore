@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Alphaxcore</AssemblyName>
     <RootNamespace>Alphaxcore</RootNamespace>
     <Platforms>AnyCPU</Platforms>
@@ -56,20 +56,20 @@
     <PackageReference Include="MailKit" Version="2.1.5.1" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.3.4" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.All" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.13" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.13" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.13" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.28" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.15" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.15" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.15" />
     <PackageReference Include="morelinq" Version="3.3.2" />
     <PackageReference Include="NBitcoin" Version="4.2.16" />
     <PackageReference Include="NBitcoin.Zcash" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="NLog" Version="4.6.4" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="1.5.0" />
-    <PackageReference Include="Npgsql" Version="4.0.7" />
+    <PackageReference Include="NLog" Version="4.7.9" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.5.4" />
+    <PackageReference Include="Npgsql" Version="4.0.11" />
     <PackageReference Include="Polly" Version="7.1.0" />
-    <PackageReference Include="prometheus-net.AspNetCore" Version="3.1.4" />
-    <PackageReference Include="prometheus-net" Version="3.1.4" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="3.3.0" />
+    <PackageReference Include="prometheus-net" Version="3.3.0" />
     <PackageReference Include="protobuf-net" Version="2.4.4" />
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
     <PackageReference Include="System.Reactive" Version="4.1.5" />
