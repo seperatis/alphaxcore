@@ -65,7 +65,7 @@
         }],
         "blockTimeInterval": 13,
         "blockRefreshInterval": 333,
-        "clientConnectionTimeout": 1200,
+        "clientConnectionTimeout": 600,
         "banning": {
           "enabled": true,
           "time": 600,
@@ -94,8 +94,8 @@
             "enabled": true,
             "paymentInterval": 600, // same as payment processing interval
             "minimumPayment": 0.01,
-            "minimumPaymentToPaymentId": 5.0,
-            "payoutScheme": "PPLNS",
+            "minimumPaymentToPaymentId": 0.5,
+            "payoutScheme": "PROP",
             "payoutSchemeConfig": { "factor": 2.0 },
             "coinbasePassword": "<your wallet password if you are running parity with wallet locked>",
             "keepUncles": false,
