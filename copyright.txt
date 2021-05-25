@@ -14,8 +14,8 @@ $ dotnet publish -c Release --framework netcoreapp2.1  -o ../../build
 SHARE_RELAY
 
 for master aswell
-[5:39 AM]
+
 sudo apt install software-properties-common build-essential apt-transport-https unzip git screen rar cmake curl -y
 sudo apt install libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq3-dev -y
-[5:39 AM]
+
 this the deps you need
