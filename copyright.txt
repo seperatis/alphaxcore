@@ -18,4 +18,11 @@ for master aswell
 sudo apt install software-properties-common build-essential apt-transport-https unzip git screen rar cmake curl -y
 sudo apt install libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq3-dev -y
 
+
+
+
+
+sudo apt install software-properties-common build-essential apt-transport-https unzip git screen rar cmake curl -y
+sudo apt install libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq3-dev -y
+
 this the deps you need
